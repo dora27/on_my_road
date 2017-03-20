@@ -19,10 +19,6 @@ gem 'autoprefixer-rails'
 gem "pundit"
 gem 'omniauth-facebook'
 
-gem 'omniauth-facebook'
-
-gem 'routific'
-
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
