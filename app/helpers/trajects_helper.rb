@@ -1,0 +1,2 @@
+module TrajectsHelper
+end
