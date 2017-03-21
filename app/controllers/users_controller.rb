@@ -8,6 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
+
   end
 
   def edit
@@ -19,5 +20,6 @@ class UsersController < ApplicationController
   private
   def find_user
     @user = User.find(current_user.id)
+    authorize @user
   end
 end
