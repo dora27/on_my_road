@@ -1,13 +1,6 @@
-# gem install routific
 require 'routific'
-require 'json'
 
 Routific.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGNmZTYwMmFhMGM3NDY4MGExY2FmY2QiLCJpYXQiOjE0OTAwOTAzMzB9.rRLtYR3UNixeilzKqcl1R2s6f-ONDsVQld06pv_EZcQ')
-
-
-# Fetch the demo data and parse it to JSON
-file = File.read('demo.json')
-data = JSON.parse(file)
 
 
 visits = {
