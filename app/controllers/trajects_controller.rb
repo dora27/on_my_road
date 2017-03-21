@@ -6,6 +6,7 @@ class TrajectsController < ApplicationController
       marker.lat traject.latitude
       marker.lng traject.longitude
     end
+    
     authorize @traject
   end
 
