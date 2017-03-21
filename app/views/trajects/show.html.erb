@@ -1,22 +1,36 @@
-<h1>Trajects#show</h1>
+<div class="container">
+  <div class="row navbar-marged">
 
+  <!-- traject -->
+    <div class="col-xs-12 col-md-8">
+      <!-- traject depart -->
+      <div class="row">
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <p>Rennes<br>6 rue de la soif</p>
+            <p>14h30</p>
+          </div>
+        </div>
 
-<div id="map" style="width: 100%; height: 600px;"></div>
+         <div class="col-xs-12 col-sm-1">
+          <div class="card">
+            <p><-></p>
+          </div>
+        </div>
 
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
-      });
-    });
-  <% end %>
-<% end %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card">
+            <p>Vieilles Charrues<br>(Parking Orange)</p>
+            <p>16h30</p>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-3">
+          <div class="card">
+            <p>15€</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

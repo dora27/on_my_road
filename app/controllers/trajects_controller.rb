@@ -5,6 +5,8 @@ class TrajectsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@trajects) do |traject, marker|
       marker.lat traject.latitude
       marker.lng traject.longitude
+    end
+    authorize @traject
   end
 
   def edit
