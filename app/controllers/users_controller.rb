@@ -7,7 +7,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = find_user
+    find_user
+    @my_trajects = current_user.trajects
 
   end
 
