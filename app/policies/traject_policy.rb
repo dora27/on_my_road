@@ -4,4 +4,8 @@ class TrajectPolicy < ApplicationPolicy
       scope
     end
   end
+
+  def show?
+    true
+  end
 end
