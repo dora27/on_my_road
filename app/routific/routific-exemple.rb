@@ -13,7 +13,7 @@ visits = {
     }
   },
   "stop_2" => {
-  "duration" => 10,
+  "duration" => 10,t
   "location" => {
     "name" => "Rue de Dinan, Bédée",
     "lat" => 48.181880,

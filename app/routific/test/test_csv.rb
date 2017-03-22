@@ -1,12 +1,21 @@
-require 'geocoder'
-require 'json'
+# require 'geocoder'
 require 'csv'
 
-fleet = {}
-arrival_time = "18:00"
+# address_passenger = "Rue Lambily, 22230 Merdrignac, France"
 
-#Chargement des drivers
-CSV.foreach("file.csv") do |row|
+def result_routific(address_passenger)
+Routific.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGNmZTYwMmFhMGM3NDY4MGExY2FmY2QiLCJpYXQiOjE0OTAwOTAzMzB9.rRLtYR3UNixeilzKqcl1R2s6f-ONDsVQld06pv_EZcQ')
+
+#Upload Drivers
+fleet = {}
+depart_time = "8:00"
+
+
+CSV.foreach("#{Rails.root.to_s}/public/sample-driver.csv", {:col_sep => ";"}) do |row|
+  hsh_start = {}
+  hsh_end = {}
+  hsh = {}
+
   address = row[1]
 
   location_driver = Geocoder.search(address)
@@ -23,74 +32,43 @@ CSV.foreach("file.csv") do |row|
 
   hsh[:start_location] = hsh_start
   hsh[:end_location] = hsh_end
-  hsh[:shift_end] = arrival_time
+  hsh[:shift_start] = depart_time
 
   fleet[row[0].to_sym] = hsh
 end
+fleet
 
 
+#My passenger
+visits = {}
+hsh_location = {}
+hsh_stop = {}
+hsh = {}
 
-#   fleet = {
-#     "vehicle_1" => {
-#       "start_location" => {
-#         "name" => "Rue du Bosphore, Rennes",
-#         "lat" => 48.083982,
-#         "lng" => -1.676955
-#       },
-#       "end_location" => {
-#         "name" => "Les Vieilles Charues",
-#         "lat" => 48.271149,
-#         "lng" => -3.550576
-#       },
-#       "shift_end" => "18:00"
-#     }
-#   }
+duration = 10
 
-#   "fleet": {
-#   "driver_1": {
-#     "start_location": {
-#       "id": "depot",
-#       "name": "800 Kingsway",
-#       "lat": 49.2553636,
-#       "lng": -123.0873365
-#     },
-#     "end_location": {
-#       "id": "depot",
-#       "name": "800 Kingsway",
-#       "lat": 49.2553636,
-#       "lng": -123.0873365
-#     },
-#     "shift_start": "8:00",
-#     "shift_end": "17:00",
-#     "min_visits": 14,
-#     "capacity": 10,
-#     "type": ["A", "B"],
-#     "strict_start": true,
-#     "break_start": "12:00",
-#     "break_end": "13:30",
-#     "break_duration": 30
-#   },
-#   "driver_2": {
-#     "start_location": {
-#       "id": "depot",
-#       "name": "800 Kingsway",
-#       "lat": 49.2553636,
-#       "lng": -123.0873365
-#     },
-#     "end_location": {
-#       "id": "depot",
-#       "name": "800 Kingsway",
-#       "lat": 49.2553636,
-#       "lng": -123.0873365
-#     },
-#     "shift_start": "8:00",
-#     "shift_end": "17:00",
-#     "capacity": 5
-#   }
-# }
+location_passenger = Geocoder.search(address_passenger)
+
+hsh_location[:name] = address_passenger
+hsh_location[:lat] = location_passenger[0].latitude
+hsh_location[:lng] = location_passenger[0].longitude
+
+hsh_stop[:duration] = duration
+hsh_stop[:location] = hsh_location
+
+hsh[:passenger] = hsh_stop
+
+visits = hsh
 
 
-# file = File.read('demo.json')
-# data = JSON.parse(file)
+#The best traject
+data = {
+  visits: visits,
+  fleet: fleet
+}
+
+route = Routific.getRoute(data)
+return route
+end
 
 
