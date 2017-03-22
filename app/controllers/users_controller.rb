@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    @user = User.new
+    @user.save
   end
 
   def show
@@ -13,14 +15,30 @@ class UsersController < ApplicationController
   end
 
   def edit
+    find_user
   end
 
   def update
+    find_user
+    @user.update(user_params)
+    if @user.save
+        redirect_to user_path(@user)
+      else
+
+    end
+  end
+
+  def profile
+    find_user
   end
 
   private
   def find_user
     @user = User.find(current_user.id)
     authorize @user
+  end
+
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email, :photo)
   end
 end

@@ -1,16 +1,9 @@
-
-<div class="navbar-marged">
-
-  <div id="dashboard-container">
-    <div id="dashboard-menu">
-    <br>
-    <br>
-    <br>
-      <%= render "tabs" %>
-    </div>
-    <div id="dashboard-content">
-      <h3>Hello <%= @user.email %></h3>
-    </div>
+<div id="dashboard">
+  <div id="dashboard-menu">
+    <%= render "tabs" %>
   </div>
-
+  <div id="dashboard-content">
+    <%= render "tab-content", active_tab: "home" %>
+  </div>
 </div>
+

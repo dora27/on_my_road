@@ -10,6 +10,7 @@
   text-decoration: none;
   width: 20%;
   height: 100vh;
+  padding-top: 120px;
 }
 
 #dashboard-content {
@@ -17,7 +18,20 @@
   float: right;
   padding-left: 40px;
   background-color: white;
-  text-color: black;
+  color: black;
   width: 80%;
   height: 100vh;
+  padding-top: 80px;
+}
+
+#profile {
+  text-align: left;
+}
+
+#trajects {
+  text-align: left;
+}
+
+#home {
+  text-align: left;
 }
