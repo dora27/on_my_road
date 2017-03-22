@@ -3,7 +3,7 @@
 
   <!-- traject -->
     <div class="col-xs-12 col-md-8">
-      <!-- traject depart -->
+      <!-- depart information -->
       <div class="row">
         <div class="col-xs-12 col-sm-4">
           <div class="card">
@@ -31,9 +31,22 @@
           </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-xs-12"> <p>DRIVER</p> </div>
+        <div class="col-xs-12"> <p>PASSAGERS</p> </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12" id="btn-bookconfirm">
+          <%= link_to "Réserver cet aller", '#', class: "btn btn-primary"%>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+      <div id="map" style="width: 100%; height: 500px;"></div>
     </div>
   </div>
-  <div id="map" style="width: 100%; height: 600px;"></div>
 </div>
 
 

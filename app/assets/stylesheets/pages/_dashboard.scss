@@ -1,0 +1,23 @@
+#dashboard {
+  display: flex;
+}
+
+#dashboard-menu {
+  position: relative;
+  float: left;
+  background-color: gray;
+  padding-left: 30px;
+  text-decoration: none;
+  width: 20%;
+  height: 100vh;
+}
+
+#dashboard-content {
+  position: relative;
+  float: right;
+  padding-left: 40px;
+  background-color: white;
+  text-color: black;
+  width: 80%;
+  height: 100vh;
+}
