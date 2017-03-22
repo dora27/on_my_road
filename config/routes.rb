@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :trajects, only: [:show, :edit, :update]  do
     resources :stops, only: [:create]
   end
-  resources :requests, only: [:show]
+  resources :requests, only: [:new, :create, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
