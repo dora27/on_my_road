@@ -1,9 +1,7 @@
-# require 'geocoder'
+require 'geocoder'
 require 'csv'
+require 'routific'
 
-# address_passenger = "Rue Lambily, 22230 Merdrignac, France"
-
-def result_routific(address_passenger)
 Routific.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGNmZTYwMmFhMGM3NDY4MGExY2FmY2QiLCJpYXQiOjE0OTAwOTAzMzB9.rRLtYR3UNixeilzKqcl1R2s6f-ONDsVQld06pv_EZcQ')
 
 #Upload Drivers
@@ -11,7 +9,7 @@ fleet = {}
 depart_time = "8:00"
 
 
-CSV.foreach("#{Rails.root.to_s}/public/sample-driver.csv", {:col_sep => ";"}) do |row|
+CSV.foreach("../../../public/sample-driver.csv", {:col_sep => ";"}) do |row|
   hsh_start = {}
   hsh_end = {}
   hsh = {}
@@ -45,6 +43,7 @@ hsh_location = {}
 hsh_stop = {}
 hsh = {}
 
+address_passenger = "Rue Lambily, 22230 Merdrignac, France"
 duration = 10
 
 location_passenger = Geocoder.search(address_passenger)
@@ -67,8 +66,25 @@ data = {
   fleet: fleet
 }
 
-route = Routific.getRoute(data)
-return route
-end
+result = Routific.getRoute(data)
+
+#Analyse results (find the driver who picks the passenger)
+driver_key = ""
+i = -1
+result.vehicleRoutes.each do |key, arr|
+   if arr.count > 2
+    arr.each_with_index { |point, j|
+      if point.location_id == "passenger"
+        i = j
+        driver_key = key
+      end
+     }
+   end
+ end
+ p i
+ result
+ p driver_key
+
+
 
 
