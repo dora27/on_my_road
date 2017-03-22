@@ -1,3 +1,19 @@
 <h1>Requests#show</h1>
 <p>Find me in app/views/requests/show.html.erb</p>
-<p> <%= @result.vehicleRoutes["Quentin"][1].arrival_time %></p>
+
+<p> <%= @index %></p>
+
+<h2> <%= @driver_key %></h2>
+<h3> <%= @start_time %></h3>
+<p> <%= @start_address %></p>
+
+<h3> <%= @post_time_start %></h3>
+<p> <%= @address_passenger %></p>
+<p> <%= @post_time_end %></p>
+
+<h3> <%= @end_time %></h3>
+<p> <%= @end_address %></p>
+
+
+<p> <%= @result.vehicleRoutes[@driver_key] %></p>
+
