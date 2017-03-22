@@ -1,4 +1,4 @@
-require_relative '../routific/test/test_csv.rb'
+require_relative '../components/result_routific.rb'
 
 class RequestsController < ApplicationController
   def new
