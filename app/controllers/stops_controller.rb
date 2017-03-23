@@ -1,6 +1,20 @@
 class StopsController < ApplicationController
+  def index
+    @user = User.find(current_user.id)
+    @traject = Traject.find(params[:traject_id])
+    @stops = @traject.stops
+    @remain_seats = @traject.seats
+    @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
+
+    @arrival_address = "Dépendances de Persivien, Carhaix"
+
+    @hash = google_map(@stops)
+
+    authorize @stops
+  end
+
   def create
-    @traject = Traject.find(trajects[:id])
+    @traject = Traject.find(traject[:id])
     @user = User.find(current_user.id)
     @stop = Stop.new(stop_params)
     @stop.traject = @traject
@@ -11,20 +25,6 @@ class StopsController < ApplicationController
   end
 
   def show
-    @user = User.find(current_user.id)
-    @traject = Traject.find(params[:traject_id])
-    @stops = @traject.stops
-    @remain_seats = @traject.seats
-    @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
-
-    @stops = Stop.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
-      marker.lat stop.latitude
-      marker.lng stop.longitude
-    end
-
-    authorize @stops
   end
 
   def update
@@ -37,6 +37,15 @@ class StopsController < ApplicationController
 private
 
     def stop_params
-      params.require(:stop).permit(:occurs_at, :address, :status)
+      params.require(:stop).permit(:occurs_at, :address)
     end
+
+   def google_map(stops)
+    stops = Stop.where.not(latitude: nil, longitude: nil)
+    gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
+      marker.lat stop.latitude
+      marker.lng stop.longitude
+    end
+    return gmap_hash
   end
+end
