@@ -7,14 +7,13 @@ def create
   @stop_address = params[:stop_address]
 
   # Create
-  @stop = Stop.new(stop_params)
-  @stop.stop_address = @stop_address
+  @stop = Stop.new(stop_address: @stop_address)
   @stop.user = @user
   @stop.traject = @traject
   @stop.save
   authorize @stop
   flash[:notice] = "Votre demande a bien été transmise."
-  # redirect_to root_path
+  redirect_to root_path
 end
 
   def show
