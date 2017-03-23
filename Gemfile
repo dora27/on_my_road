@@ -19,7 +19,7 @@ gem 'autoprefixer-rails'
 gem "pundit"
 gem 'omniauth-facebook'
 gem "geocoder"
-# gem 'routific'
+gem 'routific'
 gem "gmaps4rails"
 gem "coffee-rails"
 gem 'cloudinary'
