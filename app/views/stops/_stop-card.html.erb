@@ -1,0 +1,31 @@
+<% passenger = stop.user %>
+<div class="col-xs-4 full-height border_right">
+  <h4><%= passenger.first_name + " " + passenger.last_name %></h4>
+  <p class="no-margin">Email: <%= passenger.email %></p>
+  <p class="no-margin">Phone number: </p>
+</div>
+<div class="col-xs-4">
+  <% date = stop.created_at %>
+  <p class="date-position"><%= date.day + date.month + date.year %></p>
+  <p class= "message-position"><%= stop.message %></p>
+</div>
+
+<div class="button-position">
+  <div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-6 no-padding-right">
+      <%= simple_form_for ([@traject, stop]) do |f| %>
+      <%= f.input :status, :as => :hidden, :input_html => { :value => "Accepted" } %>
+      <%= f.submit "Accepter", class: "btn btn-primary btn-accept" %>
+      <% end %>
+    </div>
+    <div class="col-xs-6 no-padding-right">
+      <%= simple_form_for ([@traject, stop]) do |f| %>
+      <%= f.input :status, :as => :hidden, :input_html => { :value => "Refused" } %>
+      <%= f.submit "Refuser", class: "btn btn-warning" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+ <%= render 'status-color', stop: stop %>
