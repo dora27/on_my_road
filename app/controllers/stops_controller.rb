@@ -1,4 +1,5 @@
 class StopsController < ApplicationController
+
   def index
     @user = User.find(current_user.id)
     @traject = Traject.find(params[:traject_id])
@@ -14,12 +15,17 @@ class StopsController < ApplicationController
   end
 
   def create
-    @traject = Traject.find(traject[:id])
-    @user = User.find(current_user.id)
-    @stop = Stop.new(stop_params)
-    @stop.traject = @traject
+    # Recuperer les data
+    @user = current_user
+    @traject = Traject.find(params[:traject_id])
+    @stop_address = params[:stop_address]
+
+    # Create
+    @stop = Stop.new(stop_address: @stop_address)
     @stop.user = @user
+    @stop.traject = @traject
     @stop.save
+    authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
     redirect_to root_path
   end
