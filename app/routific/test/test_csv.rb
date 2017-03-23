@@ -43,7 +43,7 @@ hsh_location = {}
 hsh_stop = {}
 hsh = {}
 
-address_passenger = "Rue Lambily, 22230 Merdrignac, France"
+address_passenger = "Avenue de la marne, Vannes, France"
 duration = 10
 
 location_passenger = Geocoder.search(address_passenger)
@@ -61,9 +61,14 @@ visits = hsh
 
 
 #The best traject
+# options = {
+#    traffic: "faster",
+#    min_vehicles: true
+# }
+
 data = {
   visits: visits,
-  fleet: fleet
+  fleet: fleet,
 }
 
 result = Routific.getRoute(data)
@@ -82,8 +87,9 @@ result.vehicleRoutes.each do |key, arr|
    end
  end
  p i
- result
+ p result
  p driver_key
+
 
 
 
