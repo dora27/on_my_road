@@ -32,22 +32,22 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-address">7 rue de la Soif</p>
+                    <p class="ticket-address"><%= @address_passenger %></p>
                   </div>
                   <div class="col-xs-12 col-sm-2">
 
                   </div>
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-address">Parking Orange</p>
+                    <p class="ticket-address"><%= @end_address %></p>
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-hours">14h30</p>
+                    <p class="ticket-hours"><%= @stop_time_start %></p>
                   </div>
                   <div class="col-xs-12 col-sm-2"></div>
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-hours">16h30</p>
+                    <p class="ticket-hours"><%= @end_time %></p>
                   </div>
                 </div>
               </div>
@@ -62,8 +62,8 @@
 
             <!-- driver and passengers presentation -->
             <div class="row ticket-driver">
-              <div class="col-xs-12"> <p>DRIVER</p> </div>
-              <div class="col-xs-12"> <p>PASSAGERS</p> </div>
+              <div class="col-xs-12"> <p>DRIVER:  <%= @driver_key %> </p> </div>
+              <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div>
             </div>
           </div>
       </div>
@@ -110,22 +110,4 @@
   <% end %>
 <% end %>
 
-
-<!-- <h1>Requests#show</h1>
-<p>Find me in app/views/requests/show.html.erb</p>
-
-
-<h2> <%= @driver_key %></h2>
-<h3> <%= @start_time %></h3>
-<p> <%= @start_address %></p>
-
-<h3> <%= @post_time_start %></h3>
-<p> <%= @address_passenger %></p>
-<p> <%= @post_time_end %></p>
-
-<h3> <%= @end_time %></h3>
-<p> <%= @end_address %></p>
-
-
-<p> <%= @result.vehicleRoutes[@driver_key] %></p>
 
