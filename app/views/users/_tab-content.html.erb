@@ -1,13 +1,20 @@
 <div class="container-fluid text-center">
 
+
+<!-- Tab Home - the passenger view -->
   <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
    <h2><b>Bonjour, <%= @user.first_name %></b></h2>
+
   </div>
 
+
+<!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
     <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
   </div>
 
+
+<!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
     <h2><b>Bonjour <%= @user.first_name %></b></h2>
     <br>
@@ -25,15 +32,11 @@
     <% if @user.first_name %>
     <h4>Prenom: <%= @user.first_name %></h4>
     <% end %>
-
     <% if @user.last_name %>
     <h4>Nom: <%= @user.last_name %></h4>
     <% end %>
-
     <h4>Email: <%= @user.email %></h4>
     </div>
-
-
 
 <!-- Modal -->
   <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
