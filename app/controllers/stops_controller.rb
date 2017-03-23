@@ -7,11 +7,9 @@ class StopsController < ApplicationController
     @remain_seats = @traject.seats
     @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
 
-    @arrival_address = "Dépendances de Persivien, Carhaix"
-
     @hash = google_map(@stops)
 
-    authorize @stops
+    @stops = policy_scope(Stop).order(created_at: :desc)
   end
 
   def create
@@ -37,13 +35,13 @@ class StopsController < ApplicationController
     stop = Stop.find(params[:id])
     stop.update(stop_params)
     authorize stop
-    redirect_to traject_stop_path
+    redirect_to traject_stops_path
   end
 
 private
 
     def stop_params
-      params.require(:stop).permit(:occurs_at, :address)
+      params.require(:stop).permit(:occurs_at, :address, :status)
     end
 
    def google_map(stops)

@@ -8,6 +8,7 @@
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
 
         var myhome = {lat: <%= raw @traject.latitude  %>, lng: <%= raw @traject.longitude  %>};
+        var charrues = {lat: 48.271197, lng: -3.550563};
 
         var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
 
@@ -18,6 +19,13 @@
           customInfo: "Your start"
         });
 
+        var arrival = new google.maps.Marker({
+          map: handler.getMap(),
+          position: charrues,
+          icon: iconBase + 'red-circle.png',
+          customInfo: "Arrival"
+        });
+
         handler.bounds.extendWith(markers);
 
         handler.fitMapToBounds();
@@ -26,7 +34,7 @@
         } else if (markers.length == 1) {
           handler.getMap().setZoom(10);
         } else {
-          handler.getMap().setZoom(10);
+          handler.getMap().setZoom(7);
         }
       });
     });
