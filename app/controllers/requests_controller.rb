@@ -17,6 +17,7 @@ class RequestsController < ApplicationController
     authorize @request
     @address_passenger = @request.request_address
     @result = result_routific(@address_passenger)
+
     @driver_key = find_driver(@result)[:driver_key]
     @index = find_driver(@result)[:index]
 
