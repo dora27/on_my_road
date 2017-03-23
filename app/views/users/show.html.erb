@@ -7,3 +7,18 @@
   </div>
 </div>
 
+<%= content_for :after_js do %>
+  <script>
+  // inspect params
+  $(document).ready(function() {
+  // if paramt=ab
+    <% if params[:tab] == "profile" %>
+  // simulate click on corresponding tab
+      $("#home").removeClass('active');
+      $("#home").addClass('hidden');
+      $("#profile").removeClass('hidden');
+      $("#profile").addClass('active');
+      <% end %>
+   });
+  </script>
+<% end %>

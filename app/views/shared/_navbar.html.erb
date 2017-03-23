@@ -18,14 +18,14 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
           <% if current_user.photo.present? %>
-            <%= cl_image_tag current_user.photo.path, height: 200, width: 250, crop: :fit, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+            <%= cl_image_tag current_user.photo.path, height: 200, width: 200, crop: :fit, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <% avatar_url = current_user.facebook_picture_url || current_user.photo.path.presence || "http://placehold.it/30x30" %>
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to profile_user_path(current_user) do %>
+              <%= link_to user_path(current_user, tab: "profile") do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>

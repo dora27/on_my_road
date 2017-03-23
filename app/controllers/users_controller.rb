@@ -21,11 +21,7 @@ class UsersController < ApplicationController
   def update
     find_user
     @user.update(user_params)
-    if @user.save
-        redirect_to user_path(@user)
-      else
-
-    end
+    redirect_to user_path(current_user, tab: "profile")
   end
 
   def profile
