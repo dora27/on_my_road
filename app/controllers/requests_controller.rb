@@ -14,13 +14,19 @@ class RequestsController < ApplicationController
   end
 
   def show
+    # Resultats routific
     @request = Request.find(params[:id])
     authorize @request
-    @address_passenger = @request.request_address
-    @result = result_routific(@address_passenger)
+    @address_search = @request.request_address
+    @result = result_routific(@address_search)
 
     @driver_key = find_driver(@result)[:driver_key]
     @index = find_driver(@result)[:index]
+
+    #Data a utiliser dans la show
+    @town = split_address(@address_search)[1]
+    @address_passenger = split_address(@address_search)[0]
+    @charrues = "Dépendances de Persivien, Carhaix"
 
     @start_address = @result.vehicleRoutes[@driver_key].first.location_name
     @start_time = @result.vehicleRoutes[@driver_key].first.arrival_time
@@ -32,15 +38,16 @@ class RequestsController < ApplicationController
     @end_time = @result.vehicleRoutes[@driver_key].last.arrival_time
 
     #Map
-    @traject = Request.find(params[:id])
-    # @charrues = Geocoder.search("Dépendances de Persivien, 29800 Carhaix")[0]
+    @address_search_geo = Geocoder.search(@address_search)[0]
+    @charrues_geo = Geocoder.search("Dépendances de Persivien, 29800 Carhaix")[0]
+    @points = [@address_search_geo, @charrues_geo]
 
-
-    @hash = Gmaps4rails.build_markers(@traject) do |traject, marker|
+    @hash = Gmaps4rails.build_markers(@points) do |traject, marker|
       marker.lat traject.latitude
       marker.lng traject.longitude
     end
 
+    @traject_id = Traject.find_by_starting_address(@start_address).id
   end
 
   private
@@ -61,6 +68,10 @@ class RequestsController < ApplicationController
     res[:driver_key] = driver_key
     res[:index] = i
     return res
+  end
+
+  def split_address(address)
+    address.split(',').map {|string| string.strip}
   end
   #def request_params
   #  params.require(:request).permit(:address)

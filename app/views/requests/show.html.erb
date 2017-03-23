@@ -1,4 +1,4 @@
-<h1>Your best traject</h1>
+<h1 class = "text-center navbar-marged">Your best traject</h1>
 
 <div class="container">
   <div class="row navbar-marged">
@@ -21,7 +21,7 @@
               <div class="col-xs-12 col-sm-10">
                 <div class="row">
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-city text-center">Rennes</p>
+                    <p class="ticket-city text-center"><%= @town %> </p>
                   </div>
                   <div class="col-xs-12 col-sm-2">
                     <i class="fa fa-road fa-3x" id="logo-road" aria-hidden="true"></i>
@@ -38,7 +38,7 @@
 
                   </div>
                   <div class="col-xs-12 col-sm-5">
-                    <p class="ticket-address"><%= @end_address %></p>
+                    <p class="ticket-address"><%= @charrues %></p>
                   </div>
                 </div>
                 <div class="row">
@@ -71,14 +71,15 @@
             <!-- button book -->
             <div class="row">
               <div class="col-xs-12" id="btn-bookconfirm">
-                <%= link_to "Réserver cet aller", '#', class: "btn btn-primary"%>
+
+                <%= link_to "Réserver cet aller", traject_stops_path(traject_id: @traject_id, stop_address: @address_search), method: :post, class: "btn btn-primary" %>
               </div>
             </div>
         </div>
 
   <!-- Google map traject -->
       <div class="col-xs-12 col-md-4">
-        <div id="map" style="width: 100%; height: 500px;"></div>
+        <div id="map" style="width: 100%; height: 400px;"></div>
       </div>
     </div>
   </div>
