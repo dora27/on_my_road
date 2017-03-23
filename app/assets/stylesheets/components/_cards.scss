@@ -1,9 +1,9 @@
 .card {
-  height: 175px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-  background-size: cover !important;
-  color: white;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 10px;
 }
 .card-user {
   position: absolute;
@@ -41,3 +41,4 @@
 .card-link:hover{
   opacity: 0.1;
 }
+
