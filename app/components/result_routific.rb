@@ -4,7 +4,7 @@ require 'csv'
 # address_passenger = "Rue Lambily, 22230 Merdrignac, France"
 
 def result_routific(address_passenger)
-Routific.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGNmZTYwMmFhMGM3NDY4MGExY2FmY2QiLCJpYXQiOjE0OTAwOTAzMzB9.rRLtYR3UNixeilzKqcl1R2s6f-ONDsVQld06pv_EZcQ')
+Routific.setToken('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1OGQyYWFkODdjOGI5ODYxMGFjODVmNTUiLCJpYXQiOjE0OTAyOTcxMzl9.l4m45iSzB-Fl6UxcVexLqEyYd9JDJXcv6OJABvizFjY')
 
 #Upload Drivers
 fleet = {}

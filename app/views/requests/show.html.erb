@@ -9,8 +9,9 @@
           <!-- image travel -->
         <div class="col-xs-12 col-md-3 nopadding">
           <div class="g-item">
-            <%#= cl_image_tag("ioosfcxh8uwjz49aikrg", :crop => :scale, :width => 0.8)%>
-            <%=cl_image_tag("ioosfcxh8uwjz49aikrg", :width => 200, :height => 300, :crop => :fill)%>
+
+           <%=cl_image_tag("ioosfcxh8uwjz49aikrg", :width => 200, :height => 300, :crop => :fill)%>
+
           </div>
         </div>
 
@@ -18,42 +19,42 @@
           <div class="col-xs-12 col-md-9">
             <div class="row text-center">
             <!-- depart information -->
-              <div class="col-xs-12 col-sm-10 border-right">
+              <div class="col-xs-12 col-md-10 border-right">
                 <div class="row">
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-city text-center"><%= @town %> </p>
                   </div>
-                  <div class="col-xs-12 col-sm-2">
+                  <div class="col-xs-12 col-md-2">
                     <i class="fa fa-road fa-3x" id="logo-road" aria-hidden="true"></i>
                   </div>
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-city text-center">Vieilles Charrues</p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-address"><%= @address_passenger %></p>
                   </div>
-                  <div class="col-xs-12 col-sm-2">
+                  <div class="col-xs-12 col-md-2">
 
                   </div>
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-address"><%= @charrues %></p>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-hours"><%= @stop_time_start %></p>
                   </div>
-                  <div class="col-xs-12 col-sm-2"></div>
-                  <div class="col-xs-12 col-sm-5">
+                  <div class="col-xs-12 col-md-2"></div>
+                  <div class="col-xs-12 col-md-5">
                     <p class="ticket-hours"><%= @end_time %></p>
                   </div>
                 </div>
               </div>
 
               <!-- price information -->
-              <div class="col-xs-12 col-sm-2 text-center border-price">
+              <div class="col-xs-12 col-md-2 text-center border-price">
                 <div class="card">
                   <span class="ticket-price">15€</span>
                 </div>

@@ -1,6 +1,8 @@
 .card-ticket {
-  border-radius: 3px;
-  border: black 1px solid;
+  border: #848484 1px solid;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #848484;
+
 }
 
 .ticket-city {
@@ -28,9 +30,13 @@
 }
 
 .ticket-driver {
-  border-top: black 1px solid;
+  border-top: #848484 1px solid;
 }
 
 .border-right {
-  border-right: black 1px solid;
+  border-right: #848484 1px solid;
 }
+.g-item {
+
+}
+
