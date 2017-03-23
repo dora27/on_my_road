@@ -1,12 +1,26 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%),url('http://culturebox.francetvinfo.fr/sites/default/files/assets/images/2016/07/000_da82e.jpg') /*url('<%#= image_path('banner.jpg')%>')*/;">
-    <div class="banner-content">
-      <div class="title" style="text-align: left">
-        <h1>Allez aux Vieilles Charrues 2017</br>avec d'autres festivaliers.</h1>
-        <form action="/requests" method="post" class= "form-inline search-bar-home">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-          <input type="text" id = "my_address" name ="address" class = "form-control search-bar-home-input" placeholder="Adresse de depart">
-          <input type="submit" class="form-control btn btn-primary" value="Balancer">
-        </form>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(89, 60, 250, 0.94),rgba(60,250,238,0.94)40%,rgba(0,36,61,0.8)40%),url('http://culturebox.francetvinfo.fr/sites/default/files/assets/images/2016/07/000_da82e.jpg')">
+  <div class="container">
+    <div class="row">
+      <div class="banner-content">
+        <div class="title">
+          <h1><span>Rock&Road</span>, trouvez un co-voiturage</br> pour les Vieilles Charues 2017</h1>
+        <div class="form-home">
+                <h2 class="h2-title">D'ou partez-vous ?</h2>
+        <div class="row">
+          <form action="/requests" method="post" class="form-inline search-bar-home input">
+                <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+              <div class="col-xs-12 form-address">
+                <input type="text" id="my_address" name ="address" class = "form-control search-bar-home-input" placeholder="Adresse de depart">
+              </div>
+              <!-- buttton -->
+              <div class="col-xs-12">
+                <input type="submit" class="form-control btn btn-primary btn-home" value="Recherchez">
+              </div>
+            </div>
+          </form>
       </div>
+     </div>
     </div>
+   </div>
+  </div>
 </div>
