@@ -2,6 +2,7 @@ require_relative '../components/result_routific.rb'
 require_relative '../components/find_driver.rb'
 
 class RequestsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:create, :show]
   def new
   end
 
