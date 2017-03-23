@@ -4,6 +4,7 @@ class StopPolicy < ApplicationPolicy
       scope
     end
   end
+
   def create?
     return true
   end
@@ -15,4 +16,5 @@ class StopPolicy < ApplicationPolicy
   def update?
     return true
   end
+
 end

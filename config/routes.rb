@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:show]
+
   resources :trajects, only: [:show, :edit, :update]  do
     resources :stops, only: [:create, :show, :update]
   end
