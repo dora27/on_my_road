@@ -27,5 +27,6 @@ Traject.new(seats: 3, starting_address: "4 Rue Saint-Martin, 14000 Caen" ,luggag
 Traject.new(seats: 3, starting_address: "56 Avenue de Guerland, Paimpol" ,luggage: 3 ,description: "J'aime l'alcool, la mer et les vieilles charrues: je suis bretonne", user_id: alix.id).save
 
 
+puts "Seed OK"
 
 
