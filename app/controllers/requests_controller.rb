@@ -3,14 +3,24 @@ require_relative '../components/find_driver.rb'
 
 class RequestsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:create, :show]
+
   def new
   end
 
   def create
-    @request = Request.new(request_address: params[:address])
-    @request.save
-    authorize @request
-    redirect_to request_path(@request)
+    address = params[:address]
+
+    if address.present?
+      @request = Request.new(request_address: address)
+      authorize @request
+
+      @request.save
+      redirect_to request_path(@request)
+    else
+      authorize Request.new # LOL PUNDIT
+      flash[:alert] = "Veuillez fournir votre adresse de départ."
+      redirect_to root_path
+    end
   end
 
   def show
@@ -48,6 +58,8 @@ class RequestsController < ApplicationController
     end
 
     @traject_id = Traject.find_by_starting_address(@start_address).id
+
+    session[:request_id] = @request.id
   end
 
   private

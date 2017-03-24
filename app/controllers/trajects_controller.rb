@@ -8,6 +8,7 @@ class TrajectsController < ApplicationController
     end
     authorize @traject
 
+
     @start_time =
     @start_address = @traject.starting_address
 
@@ -16,6 +17,7 @@ class TrajectsController < ApplicationController
 
     @end_time =
     @charrues = "Dépendances de Persivien, Carhaix"
+
   end
 
   def edit
