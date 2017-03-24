@@ -15,7 +15,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <h2><%= link_to "My requests", traject_stops_path(@user) %></h2>
+          <h2><%= link_to "My requests", traject_stops_path(@user.trajects[0].id) %></h2>
         </div>
 
       </div>
