@@ -2,7 +2,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-md-offset-4">
+    <% if passenger.photo %>
      <%= cl_image_tag passenger.photo.path, class: "avatar-large" %>
+     <% end %>
     </div>
     <div class="col-xs-12 col-md-offset-3">
       <h4><%= passenger.first_name + " " + passenger.last_name %></h4>
@@ -13,8 +15,6 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-md-offset-2">
-      <!--   <% date = stop.created_at %>
-      <p class="date-position"><%= date.strftime("%Y-%m-%d %H:%M:%S") %></p> -->
         <p class= "message-position message-style">"<%= stop.message %>"</p>
     </div>
   </div>
