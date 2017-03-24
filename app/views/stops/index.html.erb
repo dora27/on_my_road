@@ -7,11 +7,11 @@
       <div class="col-xs-8">
         <% @stops.each_with_index do |stop, i| %>
           <% if i.even? %>
-          <div class="col-xs-12 message-container message-white no-padding-right">
+          <div class="col-xs-12 message-container message-white no-padding-right" id="message-<%=stop.id%>">
             <%= render 'stop-card', stop: stop %>
           </div>
           <% else %>
-          <div class="col-xs-12 message-container message-blue no-padding-right">
+          <div class="col-xs-12 message-container message-blue no-padding-right" id="message-<%=stop.id%>">
             <%= render 'stop-card', stop: stop %>
           </div>
           <% end %>

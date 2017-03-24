@@ -2,19 +2,23 @@
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:100,400,300,700,900|Raleway:100,300,700,500,900");
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:800|Questrial');
 $base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+$header-font: "Questrial", "sans-serif";
+$name-font: "Montserrat", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
+//   font-family: "Proxima";
+//   src: font-url('proxima-nova/proximanova-semibold-webfont.eot');
+//   src: font-url('proxima-nova/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+//        font-url('proxima-nova/proximanova-semibold-webfont.woff') format('woff'),
+//        font-url('proxima-nova/proximanova-semibold-webfont.ttf') format('truetype')
 // }
-// $my-font: "Font Name";
+// $my-font: "Proxima";
+// $base-font: $my-font;
+// $header-font: $my-font;
 
 // Font-size and line-height
 $base-size: 16px;

@@ -5,30 +5,49 @@
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        markers = <%= raw @hash.to_json %> // Fetch JSON with markers
+        Gmaps.store = {} // Initialize storage
+        Gmaps.store.markers = markers.map(function(m) {
+          marker = handler.addMarker(m);
+          marker.serviceObject.set('id', m.id); // You can add other attributes using set
+          return marker;
+        });
+        handler.bounds.extendWith(Gmaps.store.markers);
+        handler.fitMapToBounds();
 
+
+        //Start and arrival
         var myhome = {lat: <%= raw @traject.latitude  %>, lng: <%= raw @traject.longitude  %>};
         var charrues = {lat: 48.271197, lng: -3.550563};
-
         var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
-
         var start = new google.maps.Marker({
           map: handler.getMap(),
           position: myhome,
           icon: iconBase + 'go.png',
           customInfo: "Your start"
         });
-
         var arrival = new google.maps.Marker({
           map: handler.getMap(),
           position: charrues,
           icon: iconBase + 'red-circle.png',
           customInfo: "Arrival"
         });
+        //End
 
-        handler.bounds.extendWith(markers);
+        //Gmap selector
+        Gmaps.selectMarker = function(id) {
+            $.each(Gmaps.store.markers, function() {
+              if (this.serviceObject.id == id) {
+                this.panTo();
+                this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
+              }
+              else this.serviceObject.setAnimation(null);
+            });
+          }
 
-        handler.fitMapToBounds();
+        Gmaps.selectMarker(4);
+        //End
+
         if (markers.length == 0) {
           handler.getMap().setZoom(10);
         } else if (markers.length == 1) {
