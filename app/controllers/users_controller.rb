@@ -11,7 +11,6 @@ class UsersController < ApplicationController
   def show
     find_user
     @my_trajects = current_user.trajects
-
   end
 
   def edit

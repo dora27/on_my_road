@@ -3,24 +3,20 @@
 
 <!-- Tab Home - the passenger view -->
   <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
-   <h2><b>Bonjour, <%= @user.first_name %></b></h2>
-
+    <h2><b>Bonjour, <%= @user.first_name %></b></h2>
+      <div class="container">
+<%= render 'trajects/booking' %>
+      </div>
   </div>
-
 
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
     <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
-
     <div class="container">
       <div class="row">
-
       </div>
     </div>
-
-
   </div>
-
 
 <!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
@@ -61,11 +57,8 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
             <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
-
-            </div>
+          </div>
           <% end %>
       </div>
     </div>
   </div>
-
-
