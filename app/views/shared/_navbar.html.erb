@@ -20,7 +20,7 @@
           <% if current_user.photo.present? %>
             <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
-            <% avatar_url = current_user.facebook_picture_url || current_user.photo.path.presence || "http://placehold.it/30x30" %>
+            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
             <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
