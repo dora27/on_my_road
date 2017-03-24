@@ -17,15 +17,16 @@ class StopsController < ApplicationController
     @user = current_user
     @traject = Traject.find(params[:traject_id])
     @stop_address = params[:stop_address]
+    @stop_time = params[:stop_time]
 
     # Create
-    @stop = Stop.new(stop_address: @stop_address)
+    @stop = Stop.new(stop_address: @stop_address, occurs_at: @stop_time, end_time: params[:end_time])
     @stop.user = @user
     @stop.traject = @traject
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
-    redirect_to root_path
+    redirect_to traject_path(@traject)
   end
 
   def show
@@ -49,6 +50,9 @@ private
     gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
+      marker.json({ :id => stop.id })
+      marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+
     end
     return gmap_hash
   end
