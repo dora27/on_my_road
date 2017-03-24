@@ -1,23 +1,26 @@
 <div class="wrapper-messages">
-<h1 class="navbar-marged text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
+<div class="header-messages navbar-marged">
+<h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
 <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
 
+</div>
+
   <div class="container-fluid navbar-marged">
-    <div class="row">
-      <div class="col-xs-8">
+    <div class="row-fluid">
+      <div class="col-xs-7">
         <% @stops.each_with_index do |stop, i| %>
           <% if i.even? %>
-          <div class="col-xs-12 message-container message-white no-padding-right" id="message-<%=stop.id%>">
+          <div class="col-xs-6 message-container message-white" id="message-<%=stop.id%>">
             <%= render 'stop-card', stop: stop %>
           </div>
           <% else %>
-          <div class="col-xs-12 message-container message-blue no-padding-right" id="message-<%=stop.id%>">
+          <div class="col-xs-6 message-container message-blue" id="message-<%=stop.id%>">
             <%= render 'stop-card', stop: stop %>
           </div>
           <% end %>
         <% end %>
       </div>
-      <div class="col-xs-4">
+      <div class="col-xs-5">
         <%= render 'stop-gmap' %>
       </div>
     </div>
