@@ -1,6 +1,15 @@
 .card-ticket {
   border-radius: 3px;
-  border: black 1px solid;
+  border: #737373 1px solid;
+  box-shadow: 1px 1px 2px #737373;
+  // height: 315px;
+}
+
+.photo-ticket{
+  // display: flex;
+  background-size: cover !important;
+  // width: 194.5px;
+  height: 315px;
 }
 
 .ticket-city {
@@ -28,9 +37,9 @@
 }
 
 .ticket-driver {
-  border-top: black 1px solid;
+  border-top: #737373 1px solid;
 }
 
-.border-price {
-  border-left: black 1px solid;
+.border-right {
+  border-right: #737373 1px solid;
 }
