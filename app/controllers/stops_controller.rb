@@ -25,7 +25,7 @@ class StopsController < ApplicationController
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
-    redirect_to root_path
+    redirect_to traject_path(@traject)
   end
 
   def show
