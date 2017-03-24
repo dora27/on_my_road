@@ -1,11 +1,71 @@
 <div class="container-fluid text-center">
 
-  <div class="tab-content active" id="profile">
-    <h2>Email: <%= @user.email %></h2>
+
+<!-- Tab Home - the passenger view -->
+  <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
+   <h2><b>Bonjour, <%= @user.first_name %></b></h2>
+
   </div>
 
 
-  <div class="container tab-content hidden" >
+<!-- Tab Trajects - the driver view -->
+  <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
+    <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
+
+    <div class="container">
+      <div class="row">
+
+      </div>
+    </div>
+
+
   </div>
 
-</div>
+
+<!-- Tab Profile -->
+    <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
+    <h2><b>Bonjour <%= @user.first_name %></b></h2>
+    <br>
+    <div class="col-xs-12 col-lg-4">
+    <% if @user.photo %>
+    <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
+    <% end %>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-modal">
+    Edit profile
+    </button>
+    </div>
+    <div class="col-lg-5 ">
+    <% if @user.first_name %>
+    <h4>Prenom: <%= @user.first_name %></h4>
+    <% end %>
+    <% if @user.last_name %>
+    <h4>Nom: <%= @user.last_name %></h4>
+    <% end %>
+    <h4>Email: <%= @user.email %></h4>
+    </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <%= simple_form_for @user, id: "edit-profile-form" do |f| %>
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel"> Editer le profil </h4>
+          </div>
+          <div class="modal-body">
+             <%= render 'users/form', user: @user, f: f %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+            <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
+
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
+
+

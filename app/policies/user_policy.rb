@@ -8,4 +8,12 @@ class UserPolicy < ApplicationPolicy
   def show?
     true
   end
+
+  def profile?
+    show?
+  end
+
+  def update?
+    record == user
+  end
 end

@@ -8,20 +8,24 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
-    <!-- Different navigation if login or not -->
+  <!-- Different navigation if login or not -->
     <% if user_signed_in? %>
 
-      <!-- Dashboard text link -->
-      <%= link_to "Mes trajets", '#', class: "navbar-wagon-item navbar-wagon-link" %>
+  <!-- Dashboard text link -->
+      <%= link_to "Mes trajets", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
 
-      <!-- Profile picture and dropdown -->
+  <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% if current_user.photo.present? %>
+            <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% else %>
+            <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+            <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to user_path(current_user.id) do %>
+              <%= link_to user_path(current_user, tab: "profile") do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
               <% end %>
             </li>
@@ -35,12 +39,13 @@
       </div>
 
     <% else %>
-      <!-- Button trigger modal -->
+
+  <!-- Button trigger modal -->
       <button type="button" class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#login">
         Log In
       </button>
 
-      <!-- Modal -->
+  <!-- Modal -->
       <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabellogin">
         <div class="modal-dialog" role="document">
           <div class="modal-content">

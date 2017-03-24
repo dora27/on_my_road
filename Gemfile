@@ -22,6 +22,7 @@ gem "geocoder"
 gem 'routific'
 gem "gmaps4rails"
 gem "coffee-rails"
+
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'

@@ -1,16 +1,24 @@
-
-<div class="navbar-marged">
-
-  <div id="dashboard-container">
-    <div id="dashboard-menu">
-    <br>
-    <br>
-    <br>
-      <%= render "tabs" %>
-    </div>
-    <div id="dashboard-content">
-      <h3>Hello <%= @user.email %></h3>
-    </div>
+<div id="dashboard">
+  <div id="dashboard-menu">
+    <%= render "tabs" %>
   </div>
-
+  <div id="dashboard-content">
+    <%= render "tab-content", active_tab: "home" %>
+  </div>
 </div>
+
+<%= content_for :after_js do %>
+  <script>
+  // inspect params
+  $(document).ready(function() {
+  // if paramt=ab
+    <% if params[:tab] == "profile" %>
+  // simulate click on corresponding tab
+      $("#home").removeClass('active');
+      $("#home").addClass('hidden');
+      $("#profile").removeClass('hidden');
+      $("#profile").addClass('active');
+      <% end %>
+   });
+  </script>
+<% end %>
