@@ -70,7 +70,7 @@
                 <%= link_to "Nouvelle Recherche", root_path, method: :get, class: "btn btn-primary" %>
               </div>
               <div class="col-xs-12 col-md-6" id = "btn-bookconfirm">
-                <%= link_to "Réserver cet aller", traject_stops_path(traject_id: @traject_id, stop_address: @address_search), method: :post, class: "btn btn-primary" %>
+                <%= link_to "Réserver cet aller", traject_stops_path(traject_id: @traject_id, stop_address: @address_search, stop_time: @stop_time_start, end_time: @end_time), method: :post, class: "btn btn-primary" %>
               </div>
             </div>
         </div>
