@@ -60,7 +60,7 @@
     font-weight: 500;
     outline: 0;
     text-align: center;
-    width: 13.8em;
+    width: 21.8em;
     border-bottom-width: 2px;
     box-shadow: none;
     margin-bottom: 35px;
@@ -71,17 +71,23 @@
 }
 
 .h2-title {
-  font-size: 30px;
+  font-size: 35px;
   margin-bottom: -9px;
 }
 
 .btn-home {
-  background-color: #9C1DE7;
+  background-color: $purple;
   border-color: transparent;
 }
 
 .btn-home:hover {
   border-color: transparent;
+  background-color: #e244ff;
+}
+
+.btn-home:active {
+  border-color: transparent;
+  background-color: #e244ff;
 }
 
 .form-home {
