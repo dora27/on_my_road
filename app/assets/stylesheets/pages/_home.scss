@@ -28,3 +28,62 @@
   margin-bottom: 70px;
 }
 
+.search-bar-home {
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color:    $white;
+  }
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color:    $white;
+     opacity:  1;
+  }
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+     color:    $white;
+     opacity:  1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+     color:    $white;
+  }
+}
+
+// .input:focus {
+//     outline: none !important;
+//     border:1px solid red;
+//     box-shadow: 0 0 10px #719ECE;
+// }
+
+#my_address {
+    width: 50%;
+    background: 0;
+    border: 0;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    font-weight: 500;
+    outline: 0;
+    text-align: center;
+    width: 13.8em;
+    border-bottom-width: 2px;
+    box-shadow: none;
+    margin-bottom: 35px;
+}
+
+.form-address {
+  padding-top: 18px;
+}
+
+.h2-title {
+  font-size: 30px;
+  margin-bottom: -9px;
+}
+
+.btn-home {
+  background-color: #9C1DE7;
+  border-color: transparent;
+}
+
+.btn-home:hover {
+  border-color: transparent;
+}
+
+.form-home {
+  margin-top: 56px;
+}

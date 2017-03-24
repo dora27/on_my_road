@@ -1,0 +1,25 @@
+<div class="wrapper-messages">
+<h1 class="navbar-marged text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
+<h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
+
+  <div class="container-fluid navbar-marged">
+    <div class="row">
+      <div class="col-xs-8">
+        <% @stops.each_with_index do |stop, i| %>
+          <% if i.even? %>
+          <div class="col-xs-12 message-container message-white no-padding-right">
+            <%= render 'stop-card', stop: stop %>
+          </div>
+          <% else %>
+          <div class="col-xs-12 message-container message-blue no-padding-right">
+            <%= render 'stop-card', stop: stop %>
+          </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-xs-4">
+        <%= render 'stop-gmap' %>
+      </div>
+    </div>
+  </div>
+</div>
