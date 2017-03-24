@@ -17,9 +17,10 @@ class StopsController < ApplicationController
     @user = current_user
     @traject = Traject.find(params[:traject_id])
     @stop_address = params[:stop_address]
+    @stop_time = params[:stop_time]
 
     # Create
-    @stop = Stop.new(stop_address: @stop_address)
+    @stop = Stop.new(stop_address: @stop_address, occurs_at: @stop_time, end_time: params[:end_time])
     @stop.user = @user
     @stop.traject = @traject
     @stop.save
