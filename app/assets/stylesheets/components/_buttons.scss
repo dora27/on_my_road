@@ -10,7 +10,51 @@
 }
 
 #btn-nv-recherche {
-  text-align: left;
+  text-align: right;
   margin-top: 12px;
 }
 
+.btn-purple {
+  background-color: $purple;
+  border-color: transparent;
+  // font-size: 19px;
+}
+
+
+.btn-purple:hover {
+  border-color: transparent;
+  background-color: #e244ff;
+}
+
+.btn-purple:active {
+  border-color: transparent;
+  background-color: #e244ff;
+}
+
+.btn-purple:focus {
+  border-color: transparent;
+  background-color: #e244ff;
+}
+.btn-purple-second {
+  background-color: white;
+  color: #9C1DE7;
+  border-color: #9C1DE7;
+}
+
+.btn-purple-second:hover {
+  border-color: #e244ff;
+  background-color: white;
+  color: #e244ff;
+}
+
+.btn-purple-second:active {
+  border-color: #e244ff;
+  background-color: white;
+  color: #e244ff;
+}
+
+.btn-purple-second:focus {
+  border-color: #e244ff;
+  background-color: transparent;
+  color: #e244ff;
+}

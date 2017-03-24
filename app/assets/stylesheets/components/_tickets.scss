@@ -1,7 +1,7 @@
 .card-ticket {
-  border-radius: 3px;
-  border: #737373 1px solid;
-  box-shadow: 1px 1px 2px #737373;
+  border-radius: 10px;
+  border: #e2e7ec 1px solid;
+  // box-shadow: 1px 1px 2px #737373;
   // height: 315px;
 }
 
@@ -9,7 +9,9 @@
   // display: flex;
   background-size: cover !important;
   // width: 194.5px;
-  height: 315px;
+  height: 327px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .ticket-city {
@@ -37,9 +39,31 @@
 }
 
 .ticket-driver {
-  border-top: #737373 1px solid;
+  border-top: $purple 1px solid;
 }
 
 .border-right {
-  border-right: #737373 1px solid;
+  border-right: $purple 1px dashed;
 }
+
+.marged-top {
+  margin-top: 20px;
+}
+
+.ticket-driverinfo {
+  background-color: $purple;
+  color: white;
+  font-size: 8px;
+}
+
+.line-in-middle {
+  background: linear-gradient(to right,
+                              transparent 0%,
+                              transparent calc(50% - 0.81px),
+                              $purple calc(50% - 0.8px),
+                              $purple calc(50% + 0.8px),
+                              transparent calc(50% + 0.81px),
+                              transparent 100%);
+}
+
+
