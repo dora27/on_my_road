@@ -6,12 +6,35 @@
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
+
+        var myhome = {lat: <%= raw @traject.latitude  %>, lng: <%= raw @traject.longitude  %>};
+        var charrues = {lat: 48.271197, lng: -3.550563};
+
+        var iconBase = 'https://maps.google.com/mapfiles/kml/paddle/';
+
+        var start = new google.maps.Marker({
+          map: handler.getMap(),
+          position: myhome,
+          icon: iconBase + 'go.png',
+          customInfo: "Your start"
+        });
+
+        var arrival = new google.maps.Marker({
+          map: handler.getMap(),
+          position: charrues,
+          icon: iconBase + 'red-circle.png',
+          customInfo: "Arrival"
+        });
+
         handler.bounds.extendWith(markers);
+
         handler.fitMapToBounds();
         if (markers.length == 0) {
           handler.getMap().setZoom(10);
         } else if (markers.length == 1) {
           handler.getMap().setZoom(10);
+        } else {
+          handler.getMap().setZoom(7);
         }
       });
     });

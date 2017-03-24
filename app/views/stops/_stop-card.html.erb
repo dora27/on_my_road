@@ -6,7 +6,7 @@
 </div>
 <div class="col-xs-4">
   <% date = stop.created_at %>
-  <p class="date-position"><%= date.day + date.month + date.year %></p>
+  <p class="date-position"><%= date.strftime("%Y-%m-%d %H:%M:%S") %></p>
   <p class= "message-position"><%= stop.message %></p>
 </div>
 
