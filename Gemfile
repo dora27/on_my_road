@@ -23,6 +23,8 @@ gem 'routific'
 gem "gmaps4rails"
 gem "coffee-rails"
 gem 'cloudinary'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
