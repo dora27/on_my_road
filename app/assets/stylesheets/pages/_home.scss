@@ -78,6 +78,8 @@
 .btn-home {
   background-color: $purple;
   border-color: transparent;
+  padding: 14px 35px 42px 35px;
+  font-size: 19px;
 }
 
 .btn-home:hover {
@@ -86,6 +88,11 @@
 }
 
 .btn-home:active {
+  border-color: transparent;
+  background-color: #e244ff;
+}
+
+.btn-home:focus {
   border-color: transparent;
   background-color: #e244ff;
 }

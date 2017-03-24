@@ -4,7 +4,9 @@ require 'csv'
 # address_passenger = "Rue Lambily, 22230 Merdrignac, France"
 
 def result_routific(address_passenger)
-Routific.setToken(ENV["ROUTIFIC"])
+
+Routific.setToken(ENV['ROUTIFIC'])
+
 
 #Upload Drivers
 fleet = {}
