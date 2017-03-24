@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Stop.destroy_all
 Traject.destroy_all
 User.destroy_all
+
 #Creation des profils users (drivers)
 simon = User.new(email: "simon@gmail.com", password: "lawagon1", first_name: "Simon", last_name: "DeSwag", phone: "0123456789")
 simon.save
