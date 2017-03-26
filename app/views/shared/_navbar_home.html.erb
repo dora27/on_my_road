@@ -12,7 +12,7 @@
     <% if user_signed_in? %>
 
   <!-- Dashboard text link -->
-      <%= link_to "Mes trajets", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "Mes trajets", user_path(current_user), class: "navbar-wagon-item navbar-wagon-link-home" %>
 
   <!-- Profile picture and dropdown -->
       <div class="navbar-wagon-item">
@@ -41,7 +41,7 @@
     <% else %>
 
   <!-- Button trigger modal -->
-      <button type="button" class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#login">
+      <button type="button" class="navbar-wagon-item navbar-wagon-link-home" data-toggle="modal" data-target="#login">
         Log In
       </button>
 
@@ -51,7 +51,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="myModalLabellogin">C'est bon de vous revoir.</h4>
+              <h4 class="modal-title" id="myModalLabellogin">Ravi de vous revoir on the road</h4>
             </div>
             <div class="modal-body">
             <%= render "devise/sessions/new", resource: resource, resource_name: resource_name, resource_class: User %>
@@ -62,7 +62,7 @@
 
       <!-- popup Sign In NOT WORKING -->
       <!-- Button trigger modal -->
-      <button type="button" class="navbar-wagon-item navbar-wagon-link" data-toggle="modal" data-target="#signin">
+      <button type="button" class="navbar-wagon-item navbar-wagon-link-home" data-toggle="modal" data-target="#signin">
         Sign up
       </button>
 
@@ -82,10 +82,10 @@
       </div>
 
       <!-- Log In text link -->
-      <%#= link_to t(".sign_in", default: "Log In"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to t(".sign_in", default: "Log In"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link-home" %>
 
       <!-- Sign Up text link -->
-      <%#= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to t(".sign_up", default: "Sign Up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link-home" %>
 
     <% end %>
 

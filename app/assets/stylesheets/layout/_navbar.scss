@@ -44,13 +44,26 @@
 
 /* Navbar standard link */
 .navbar-wagon-link {
-  color: $white;
+  color: $purple;
   font-size: 14px;
   background:none;
   border:none;
   outline:0 !important;
 }
 .navbar-wagon-link:hover {
+  color: $purple2;
+  text-decoration: none;
+}
+
+/* Navbar standard link for home */
+.navbar-wagon-link-home {
+  color: $white;
+  font-size: 14px;
+  background:none;
+  border:none;
+  outline:0 !important;
+}
+.navbar-wagon-link-home:hover {
   color: $purple;
   text-decoration: none;
 }
