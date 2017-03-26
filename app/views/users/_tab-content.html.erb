@@ -7,7 +7,7 @@
 
   </div>
 
-
+<% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
     <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
@@ -20,6 +20,7 @@
 
       </div>
     </div>
+<% end  %>
 
 
   </div>
