@@ -17,7 +17,9 @@
 .btn-purple {
   background-color: $purple;
   border-color: transparent;
-  // font-size: 19px;
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 
@@ -34,11 +36,13 @@
 .btn-purple:focus {
   border-color: transparent;
   background-color: #e244ff;
+  box-shadow: 0 0 3pt 2pt cornflowerblue;
 }
 .btn-purple-second {
   background-color: white;
   color: #9C1DE7;
   border-color: #9C1DE7;
+  border-radius: 20px;
 }
 
 .btn-purple-second:hover {
