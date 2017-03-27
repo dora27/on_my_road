@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     @user = find_user
 
     #show/traject
+     #info sur le depart
+
+
+    #info sur l arrivee
+    @charrues = "Dépendances de Persivien, Carhaix"
+    @charrues_geo = Geocoder.search(@charrues)[0]
 
     #if Passenger
     if @user.trajects.empty?
@@ -46,12 +52,7 @@ class UsersController < ApplicationController
       @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
       @hash = google_map(@stops)
     end
-    #info sur le depart
     @start_address = @traject.starting_address
-
-    #info sur l arrivee
-    @charrues = "Dépendances de Persivien, Carhaix"
-    @charrues_geo = Geocoder.search(@charrues)[0]
   end
 
   def edit
