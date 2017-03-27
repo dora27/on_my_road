@@ -10,27 +10,27 @@ Traject.destroy_all
 User.destroy_all
 
 #Creation des profils users (drivers)
-simon = User.new(email: "simon@gmail.com", password: "lawagon1", first_name: "Simon", last_name: "DeSwag", phone: "0123456789")
+simon = User.new(email: "simon@gmail.com", password: "lewagon1", first_name: "Simon", last_name: "DeSwag", phone: "0123456789")
 simon.save
 url = "http://lorempixel.com/400/400/people/1/"
 simon.photo_url = url
 
-stegre = User.new(email: "virtualflow@gmail.com", password: "lawagon2", first_name: "VirtualFlow", last_name: "Stegre", phone: "0623752788")
+stegre = User.new(email: "virtualflow@gmail.com", password: "lewagon2", first_name: "VirtualFlow", last_name: "Stegre", phone: "0623752788")
 stegre.save
 url = "http://lorempixel.com/400/400/people/2/"
 stegre.photo_url = url
 
-quentin = User.new(email: "quentinbeau@gmail.com", password: "lawagon3", first_name: "Quentin", last_name: "BoV", phone: "0634569345")
+quentin = User.new(email: "quentinbeau@gmail.com", password: "lewagon3", first_name: "Quentin", last_name: "BoV", phone: "0634569345")
 quentin.save
 url = "http://lorempixel.com/400/400/people/3/"
 quentin.photo_url = url
 
-dora = User.new(email: "dora@gmail.com", password: "gandul", first_name: "Dora", phone: "0695432864")
+dora = User.new(email: "dora@gmail.com", password: "lewagon4", first_name: "Dora", phone: "0695432864")
 dora.save
 url = "http://lorempixel.com/400/400/people/4/"
 dora.photo_url = url
 
-alix = User.new(email: "alix@gmail.com", password: "lawagon5",  first_name: "Alix", phone: "0623000788")
+alix = User.new(email: "alix@gmail.com", password: "lewagon5",  first_name: "Alix", phone: "0623000788")
 alix.save
 url = "http://lorempixel.com/400/400/people/5/"
 alix.photo_url = url
