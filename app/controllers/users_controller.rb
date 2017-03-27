@@ -9,9 +9,34 @@ class UsersController < ApplicationController
   end
 
   def show
-    find_user
-    @my_trajects = current_user.trajects
+    @user = find_user
 
+    @user_stop = @user.stop
+    @traject = Traject.find(@user_stop.traject_id)
+    authorize @traject
+    #Copié collé
+    @address_stop = @user_stop.stop_address
+    @address_stop_geo = Geocoder.search(@address_stop)[0]
+    @address_stop_split = split_address(@address_stop)
+    @start_address = @traject.starting_address
+
+    @stop_time = @user_stop.occurs_at
+    @town = @address_stop_split[1]
+    @address_passenger = @address_stop_split[0]
+
+    # @end_time
+    @charrues = "Dépendances de Persivien, Carhaix"
+    @charrues_geo = Geocoder.search(@charrues)[0]
+    @end_time = @user_stop.end_time
+
+    @driver = User.find(@traject.user_id)
+
+    # Map
+    @trajects = [@traject, @charrues_geo, @address_stop_geo]
+    @hash = Gmaps4rails.build_markers(@trajects) do |traject, marker|
+      marker.lat traject.latitude
+      marker.lng traject.longitude
+    end
   end
 
   def edit
@@ -32,9 +57,15 @@ class UsersController < ApplicationController
   def find_user
     @user = User.find(current_user.id)
     authorize @user
+    return @user
   end
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :photo)
   end
+
+  def split_address(address)
+    address.split(',').map {|string| string.strip}
+  end
+
 end

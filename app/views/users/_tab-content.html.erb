@@ -3,15 +3,12 @@
 
 <!-- Tab Home - the passenger view -->
   <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
-   <h2><b>Bonjour, <%= @user.first_name %></b></h2>
-
+    <%= render "traject-user" %>
   </div>
 
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-    <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
-
     <div class="container">
       <div class="row">
         <div class="col-lg-6">

@@ -4,10 +4,9 @@ class StopsController < ApplicationController
     @user = User.find(current_user.id)
     @traject = Traject.find(params[:traject_id])
     @remain_seats = @traject.seats
+    @stops = policy_scope(Stop).where(traject_id: @traject.id)
     @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
     @hash = google_map(@stops)
-
-    @stops = policy_scope(Stop).where(traject_id: @traject.id)
   end
 
   def create
@@ -31,7 +30,7 @@ class StopsController < ApplicationController
     stop = Stop.find(params[:id])
     stop.update(stop_params)
     authorize stop
-    redirect_to traject_stops_path
+    # redirect_to traject_stops_path
   end
 
 private
