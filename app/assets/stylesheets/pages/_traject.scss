@@ -2,15 +2,29 @@
   // border-radius: 3px;
   // border: #737373 1px solid;
   // box-shadow: 1px 1px 2px #737373;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px !important;
   // height: 315px;
+
 }
 
+
 .container-driver p {
-      margin: 11px 0 11px !important;
+  margin-left: 20px !important;
+  margin-bottom: 0px !important;
+  text-align: left;
+
+}
+
+.driver-name-traject{
+  margin-left: 40px !important;
 }
 
 #status{
   color:orange;
 }
+
+.photo-ticket-traject{
+ height: 378px;
+}
+
