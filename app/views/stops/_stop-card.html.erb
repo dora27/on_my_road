@@ -20,19 +20,4 @@
   </div>
 </div>
 
-<div class="button-position">
-  <div class="container-fluid">
-    <div class="row padding-row">
-        <%= simple_form_for ([@traject, stop]) do |f| %>
-      <div class="col-xs-5 col-md-offset-1">
-        <%= f.input :status, :collection => ["Accepted","Refused"], label: false  %>
-      </div>
-      <div class="col-xs-3">
-        <%= f.submit "Décider", class: "btn btn-primary btn-purple", id: "btn_card" %>
-      </div>
-        <% end %>
-    </div>
-  </div>
-</div>
-
 <%= render 'status-color', stop: stop %>
