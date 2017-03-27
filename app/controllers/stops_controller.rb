@@ -29,9 +29,6 @@ class StopsController < ApplicationController
     redirect_to traject_path(@traject)
   end
 
-  def show
-  end
-
   def update
     stop = Stop.find(params[:id])
     stop.update(stop_params)
