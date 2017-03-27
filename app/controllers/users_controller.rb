@@ -10,30 +10,24 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
-    unless @user.stop.nil?
-      @user_stop = @user.stop
-      @traject = Traject.find(@user_stop.traject_id)
-      @address_stop = @user_stop.stop_address
-      @address_stop_geo = Geocoder.search(@address_stop)[0]
-      @address_stop_split = split_address(@address_stop)
-    else
-      @traject = @user.trajects[0]
-      @stops = @traject.stops
-      # Revoir le cas driver
-    end
+    @user_stop = @user.stop
+    @traject = Traject.find(@user_stop.traject_id)
     authorize @traject
+
+    #show/traject
+
+    @address_stop = @user_stop.stop_address
+    @address_stop_geo = Geocoder.search(@address_stop)[0]
+    @address_stop_split = split_address(@address_stop)
+    @stop_time = @user_stop.occurs_at
 
     @start_address = @traject.starting_address
 
-    @stop_time = @user_stop.occurs_at
     @town = @address_stop_split[1]
     @address_passenger = @address_stop_split[0]
-
-    # @end_time
     @charrues = "Dépendances de Persivien, Carhaix"
     @charrues_geo = Geocoder.search(@charrues)[0]
     @end_time = @user_stop.end_time
-
     @driver = User.find(@traject.user_id)
 
     # Map
@@ -41,6 +35,12 @@ class UsersController < ApplicationController
     @hash = Gmaps4rails.build_markers(@trajects) do |traject, marker|
       marker.lat traject.latitude
       marker.lng traject.longitude
+
+    #Show/Request
+    @remain_seats = @traject.seats
+    @stops = @traject.stops
+    @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
+    @hash = google_map(@stops)
     end
   end
 
@@ -71,6 +71,17 @@ class UsersController < ApplicationController
 
   def split_address(address)
     address.split(',').map {|string| string.strip}
+  end
+  def google_map(stops)
+    stops = Stop.where.not(latitude: nil, longitude: nil)
+    gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
+      marker.lat stop.latitude
+      marker.lng stop.longitude
+      marker.json({ :id => stop.id })
+      marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+
+    end
+    return gmap_hash
   end
 
 end
