@@ -6,8 +6,6 @@ require 'csv'
 
 Routific.setToken(ENV['ROUTIFIC'])
 
-
-
 #Upload Drivers
 fleet = {}
 depart_time = "8:00"
@@ -71,6 +69,6 @@ data = {
 
 route = Routific.getRoute(data)
 return route
-end
+
 
 

@@ -26,6 +26,7 @@ gem "coffee-rails"
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
+gem 'gibbon'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
@@ -35,6 +36,7 @@ end
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem "letter_opener"
 
   gem 'pry-byebug'
   gem 'pry-rails'
