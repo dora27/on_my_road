@@ -10,14 +10,19 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
-
-    @user_stop = @user.stop
-    @traject = Traject.find(@user_stop.traject_id)
+    unless @user.stop.nil?
+      @user_stop = @user.stop
+      @traject = Traject.find(@user_stop.traject_id)
+      @address_stop = @user_stop.stop_address
+      @address_stop_geo = Geocoder.search(@address_stop)[0]
+      @address_stop_split = split_address(@address_stop)
+    else
+      @traject = @user.trajects[0]
+      @stops = @traject.stops
+      # Revoir le cas driver
+    end
     authorize @traject
-    #Copié collé
-    @address_stop = @user_stop.stop_address
-    @address_stop_geo = Geocoder.search(@address_stop)[0]
-    @address_stop_split = split_address(@address_stop)
+
     @start_address = @traject.starting_address
 
     @stop_time = @user_stop.occurs_at
