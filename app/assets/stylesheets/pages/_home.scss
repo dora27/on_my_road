@@ -64,6 +64,7 @@
     border-bottom-width: 2px;
     box-shadow: none;
     margin-bottom: 35px;
+    font-family: $header-font;
 }
 
 .form-address {
@@ -80,6 +81,7 @@
   border-color: transparent;
   padding: 14px 35px 42px 35px;
   font-size: 19px;
+  border-radius: 40px;
 }
 
 .btn-home:hover {
@@ -95,8 +97,25 @@
 .btn-home:focus {
   border-color: transparent;
   background-color: #e244ff;
+  outline: none;
+  box-shadow: 0 0 3pt 2pt cornflowerblue;
 }
 
 .form-home {
   margin-top: 56px;
 }
+
+.comment-ca-marche {
+  padding: 40px 0px;
+  background-color:#f2f2f2;
+  background-size: cover !important;
+  // margin: 0px !important;
+
+}
+
+.comment-ca-marche h2{
+  color: $purple;
+  font-size: 46px ;
+  margin-bottom: 28px;
+}
+

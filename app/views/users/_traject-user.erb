@@ -1,7 +1,7 @@
-<h1 class = "text-center navbar-marged">Trajet proposé</h1>
+ <h1 class = "text-center navbar-marged">Your best traject</h1>
 
 <div class="container">
-  <div class="row marged-top">
+  <div class="row navbar-marged">
     <div class="col-xs-12 col-md-8">
 
   <!-- traject ticket -->
@@ -30,7 +30,7 @@
                   <div class="col-xs-12 col-md-5">
                     <p class="ticket-address"><%= @address_passenger %></p>
                   </div>
-                  <div class="col-xs-12 col-md-2 line-in-middle">
+                  <div class="col-xs-12 col-md-2">
 
                   </div>
                   <div class="col-xs-12 col-md-5">
@@ -39,7 +39,7 @@
                 </div>
                 <div class="row">
                   <div class="col-xs-12 col-md-5">
-                    <p class="ticket-hours"><%= @stop_time_start %></p>
+                    <p class="ticket-hours"><%= @stop_time %></p>
                   </div>
                   <div class="col-xs-12 col-md-2"></div>
                   <div class="col-xs-12 col-md-5">
@@ -58,24 +58,40 @@
 
             <!-- driver and passengers presentation -->
             <div class="row ticket-driver">
-              <!-- <div class="col-xs-12 ticket-driverinfo"> <p>Information</p> </div> -->
-              <div class="col-xs-12" style="margin-top: 14px"> <p>DRIVER:  <%= @driver_key %> </p> </div>
+              <div class="col-xs-12 text-center"> <h4 id="status"> <%=  @user_stop.status %></h4> </div>
               <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div>
             </div>
           </div>
       </div>
 
-            <!-- button book -->
+
+            <!-- Info Driver -->
+            <div class="container-driver">
             <div class="row">
-              <div class="col-xs-12 col-md-9" id="btn-nv-recherche" >
-                <%= link_to "Nouvelle Recherche", root_path, method: :get, class: "btn btn-primary btn-purple-second" %>
+              <div class="col-xs-12 col-md-3"> </div>
+              <div class="col-xs-12 col-md-9">
+              <div class="row text-center"><h3> Info Driver </h3></div>
+              <div class="row">
+                <div class="col-xs-12 col-md-3"><h4> Driver </h4></div>
+                <div class="col-xs-12 col-md-9">
+                  <p> <%= @driver.first_name %> <%= @driver.last_name %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-3"><h4>Adresse</h4></div>
+                <div class="col-xs-12 col-md-9"><p><%= @start_address %></p></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-3"><h4>Téléphone</h4></div>
+                <div class="col-xs-12 col-md-9"><p><%= @driver.phone %></p></div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-3"><h4>Description</h4> </div>
+                <div class="col-xs-12 col-md-9"><p><%= @traject.description %></p></div>
+              </div>
               </div>
 
-              <div class="col-xs-12 col-md-3" id = "btn-bookconfirm">
-
-                <%= link_to "Réserver cet aller", traject_stops_path(traject_id: @traject_id, stop_address: @address_search, stop_time: @stop_time_start, end_time: @end_time), method: :post, class: "btn btn-primary btn-purple" %>
-
-              </div>
+            </div>
             </div>
         </div>
 
@@ -112,5 +128,3 @@
 
   <% end %>
 <% end %>
-
-

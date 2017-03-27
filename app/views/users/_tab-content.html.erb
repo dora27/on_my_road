@@ -3,24 +3,24 @@
 
 <!-- Tab Home - the passenger view -->
   <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
-    <h2><b>Bonjour, <%= @user.first_name %></b></h2>
-      <div class="container">
-<%= render 'trajects/booking' %>
-      </div>
+
+    <%= render "traject-user" %>
   </div>
 
+<% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
-  <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-    <h2><b>Bonjour <%= @user.first_name %> ! </b></h2>
+  <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects">
     <div class="container">
       <div class="row">
 
         <div class="col-lg-6">
           <h2><%= link_to "My requests", traject_stops_path(@user.trajects[0].id) %></h2>
         </div>
-      </div>
     </div>
   </div>
+  </div>
+<% end  %>
+
 
 <!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
