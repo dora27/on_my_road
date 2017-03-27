@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :trajects
+  has_many :trajects, dependent: :destroy
   has_attachment :photo
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

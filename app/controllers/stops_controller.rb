@@ -3,13 +3,11 @@ class StopsController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @traject = Traject.find(params[:traject_id])
-    @stops = @traject.stops
     @remain_seats = @traject.seats
     @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
-
     @hash = google_map(@stops)
 
-    @stops = policy_scope(Stop).order(created_at: :desc)
+    @stops = policy_scope(Stop).where(traject_id: @traject.id)
   end
 
   def create
