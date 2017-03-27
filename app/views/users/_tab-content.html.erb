@@ -2,9 +2,15 @@
 
 
 <!-- Tab Home - the passenger view -->
-  <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
-    <%= render "traject-user" %>
-  </div>
+  <% if @user.trajects.empty? == true  %>
+    <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
+      <%= render "traject-user" %>
+    </div>
+  <%else%>
+  <h1>Tes passagers</h1>
+  <%end%>
+
+
 
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
@@ -32,8 +38,9 @@
     </div>
 <% end  %>
 
+</div>
 
-  </div>
+
 
 
 <!-- Tab Profile -->

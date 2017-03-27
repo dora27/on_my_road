@@ -10,37 +10,46 @@ class UsersController < ApplicationController
 
   def show
     @user = find_user
-    @user_stop = @user.stop
-    @traject = Traject.find(@user_stop.traject_id)
-    authorize @traject
 
     #show/traject
 
-    @address_stop = @user_stop.stop_address
-    @address_stop_geo = Geocoder.search(@address_stop)[0]
-    @address_stop_split = split_address(@address_stop)
-    @stop_time = @user_stop.occurs_at
+    #if Passenger
+    if @user.trajects.empty?
+      #infos sur le stop
+      @user_stop = @user.stop
+      @traject = Traject.find(@user_stop.traject_id)
+      authorize @traject
 
-    @start_address = @traject.starting_address
+      @address_stop = @user_stop.stop_address
+      @address_stop_geo = Geocoder.search(@address_stop)[0]
+      @address_stop_split = split_address(@address_stop)
+      @stop_time = @user_stop.occurs_at
+      @town = @address_stop_split[1]
+      @address_passenger = @address_stop_split[0]
 
-    @town = @address_stop_split[1]
-    @address_passenger = @address_stop_split[0]
-    @charrues = "Dépendances de Persivien, Carhaix"
-    @charrues_geo = Geocoder.search(@charrues)[0]
-    @end_time = @user_stop.end_time
-    @driver = User.find(@traject.user_id)
+      #info sur le depart
+      @start_address = @traject.starting_address
 
-    # Map
-    @trajects = [@traject, @charrues_geo, @address_stop_geo]
-    @hash = Gmaps4rails.build_markers(@trajects) do |traject, marker|
-      marker.lat traject.latitude
-      marker.lng traject.longitude
+      #info sur l arrivee
+      @charrues = "Dépendances de Persivien, Carhaix"
+      @charrues_geo = Geocoder.search(@charrues)[0]
+      @end_time = @user_stop.end_time
+      @driver = User.find(@traject.user_id)
 
-    #Show/Request
-    @remain_seats = @traject.seats
-    @stops = @traject.stops
-    @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
-    @hash = google_map(@stops)
+      # Map
+      @trajects = [@traject, @charrues_geo, @address_stop_geo]
+      @hash = Gmaps4rails.build_markers(@trajects) do |traject, marker|
+        marker.lat traject.latitude
+        marker.lng traject.longitude
+      end
+
+    #Driver
+    else @user.trajects
+      @traject = @user.trajects[0]
+      @remain_seats = @traject.seats
+      @stops = @traject.stops
+      @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
+      @hash = google_map(@stops)
     end
   end
 

@@ -13,7 +13,6 @@ class RequestsController < ApplicationController
     if address.present?
       @request = Request.new(request_address: address)
       authorize @request
-
       @request.save
       redirect_to request_path(@request)
     else
