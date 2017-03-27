@@ -27,12 +27,7 @@ class UsersController < ApplicationController
       @town = @address_stop_split[1]
       @address_passenger = @address_stop_split[0]
 
-      #info sur le depart
-      @start_address = @traject.starting_address
 
-      #info sur l arrivee
-      @charrues = "Dépendances de Persivien, Carhaix"
-      @charrues_geo = Geocoder.search(@charrues)[0]
       @end_time = @user_stop.end_time
       @driver = User.find(@traject.user_id)
 
@@ -51,6 +46,12 @@ class UsersController < ApplicationController
       @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
       @hash = google_map(@stops)
     end
+    #info sur le depart
+    @start_address = @traject.starting_address
+
+    #info sur l arrivee
+    @charrues = "Dépendances de Persivien, Carhaix"
+    @charrues_geo = Geocoder.search(@charrues)[0]
   end
 
   def edit
