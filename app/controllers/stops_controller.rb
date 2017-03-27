@@ -23,7 +23,7 @@ class StopsController < ApplicationController
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
-    RestaurantMailer.validation(@stop).deliver_now
+    StopMailer.validation(@stop).deliver_now
     redirect_to traject_path(@traject)
   end
 
