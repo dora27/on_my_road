@@ -49,7 +49,11 @@ class UsersController < ApplicationController
       @traject = @user.trajects[0]
       @remain_seats = @traject.seats
       @stops = @traject.stops
-      @stops.each { |stop| @remain_seats -= 1 if stop.status == "Accepted"}
+      @pending_requests = 0
+      @stops.each do |stop|
+        @remain_seats -= 1 if stop.status == "Accepted"
+        @pending_requests += 1 if stop.status = "Pending"
+      end
       @hash = google_map(@stops)
     end
     @start_address = @traject.starting_address

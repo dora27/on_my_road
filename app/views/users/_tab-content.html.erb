@@ -19,31 +19,48 @@
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-    <div class="container-fluid">
-      <div class="row-fluid">
-         <div class="col-xs-7">
-          <% @stops.each_with_index do |stop, i| %>
-            <% if i == 1 %>
-            <div class="col-xs-6 col-md-offset-3 message-container active" id="message-<%=stop.id%>">
-              <%= render 'stop-card', stop: stop %>
-            </div>
-            <% else %>
-            <div class="col-xs-6 col-md-offset-3 message-container hidden" id="message-<%=stop.id%>">
-              <%= render 'stop-card', stop: stop %>
-            </div>
-            <% end %>
-          <% end %>
-        </div>
-        <div class="col-xs-5">
-          <%= render 'stop-gmap' %>
-        </div>
-        </div>
-      </div>
-    </div>
-<% end  %>
+    <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
+    <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
+    <h2 class="text-center"> Ma voiture :</h2>
+    <div id="car-people"></div>
 
+<div class="container-fluid navbar-marged">
+  <div class="row-fluid">
+    <div class="col-xs-7">
+      <% @stops.each_with_index do |stop, i| %>
+        <div class="card-flexbox hidden" id="message-<%= i %>">
+          <%= render 'stop-card', stop: stop, i: i %>
+      </div>
+      <% end %>
+   </div>
+
+    <div class="col-xs-5">
+      <%= render 'stop-gmap' %>
+    </div>
+
+  </div>
 </div>
 
+<% content_for :after_js do %>
+  <script>
+
+  $(document).ready(function() {
+    $("#message-0").removeClass('hidden');
+  });
+
+  $(".card-btn").on("click", function(){
+    var id = $(this).data("id");
+    $("#message-" + id).fadeOut(300, function() {
+    $("#message-" + id).addClass('hidden');
+    id += 1;
+    $("#message-" + id).fadeIn(400).removeClass('hidden');
+     });
+  });
+
+  </script>
+<% end %>
+</div>
+<% end %>
 
 
 
@@ -70,6 +87,7 @@
     <% end %>
     <h4>Email: <%= @user.email %></h4>
     </div>
+    </div>
 
 <!-- Modal -->
   <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -92,5 +110,6 @@
       </div>
     </div>
   </div>
+</div>
 
 

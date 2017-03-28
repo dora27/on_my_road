@@ -6,7 +6,7 @@
     </a>
   <% if @user.trajects.empty? == false  %>
     <a class="tab" data-target="#trajects">
-      <h4>Requests</h4>
+      <h4>Requests (<%= @pending_requests %>)</h4>
       <br>
     </a>
   <%end%>
