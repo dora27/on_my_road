@@ -23,7 +23,10 @@ class StopsController < ApplicationController
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
+
+    StopMailer.validation(@stop).deliver_now
     redirect_to user_path(@user)
+    
   end
 
   def update
@@ -35,13 +38,13 @@ class StopsController < ApplicationController
 
 private
 
-    def stop_params
+  def stop_params
       params.require(:stop).permit(:occurs_at, :address, :status)
-    end
+  end
 
-   def google_map(stops)
+  def google_map(stops)
     stops = Stop.where.not(latitude: nil, longitude: nil)
-    gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
+    gmap_hash = Gmaps4rails.build_markers(stops) do |stop,  marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
       marker.json({ :id => stop.id })
@@ -50,4 +53,6 @@ private
     end
     return gmap_hash
   end
+
+
 end

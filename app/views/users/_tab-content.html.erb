@@ -14,7 +14,6 @@
     </div>
   <%end%>
 
-
 <!-- Driver -->
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
@@ -44,22 +43,19 @@
 
 </div>
 
-
-
-
 <!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
       <h2><b>Bonjour <%= @user.first_name %></b></h2>
       <br>
     <div class="col-xs-12 col-lg-4">
-      <% if @user.photo %>
-      <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
-      <% end %>
-      <br>
-      <br>
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#edit-modal">
-      Edit profile
-      </button>
+    <% if @user.photo %>
+    <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
+    <% end %>
+    <br>
+    <br>
+    <button type="button" class="btn btn-primary btn-purple" data-toggle="modal" data-target="#edit-modal">
+    Edit profile
+    </button>
     </div>
     <div class="col-lg-5 ">
       <% if @user.first_name %>
@@ -88,12 +84,11 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-            <%= f.submit "Enregistrer les modifications", class: "btn btn-primary" %>
+
+            <%= f.submit "Enregistrer les modifications", class: "btn btn-primary btn-purple" %>
 
             </div>
           <% end %>
       </div>
     </div>
   </div>
-
-
