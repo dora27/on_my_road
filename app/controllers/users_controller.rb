@@ -57,6 +57,10 @@ class UsersController < ApplicationController
 
     end
     @start_address = @traject.starting_address
+
+    #Reviews
+    @review = Review.new
+    @reviews = @traject.reviews
   end
 
   def edit
