@@ -14,7 +14,7 @@ pour les Vieilles Charrues 2017</title>
     <%= render 'shared/navbar_home' if @navbar_home %>
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+
 
 
     <%= javascript_include_tag 'application' %>
@@ -24,5 +24,10 @@ pour les Vieilles Charrues 2017</title>
     <%= cloudinary_js_config %>
 
     <%= yield(:after_js) %>
+    <%= yield(:after_js1) %>
+    <%= yield(:after_js2) %>
+    <%= yield(:after_js3) %>
+
+
   </body>
 </html>

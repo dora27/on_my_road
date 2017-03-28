@@ -24,14 +24,6 @@
           <div class="col-md-9"><h4>Les Vieilles Charrues</h4></div>
         </div>
 
-          <!-- <p>Départ: <%= @start_address %></p>
-          <p><%= @traject.start_time %> </p>
-          <p> Etape 1: <%= @stop.stop_address %> </p>
-          <p> <%= User.find(@stop.user_id).first_name %> <%= User.find(@stop.user_id).last_name %> </p>
-          <p><%= @stop.occurs_at %> </p>
-          <p>Arrivée: Les Vieilles Charrues </p>
-          <p> <%= @stop.end_time %></p> -->
-
       </div>
       <div class="col-xs-12 col-md-6 map-traject">
         <div id="map-traject-driver" style="width: 100%; height: 400px;"></div>
@@ -40,7 +32,7 @@
   </div>
 </div>
 
-<% content_for(:after_js) do %>
+<% content_for(:after_js2) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('.ticket-address').textfill({
