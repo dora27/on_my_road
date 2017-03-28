@@ -46,6 +46,7 @@ class UsersController < ApplicationController
       @traject = @user.trajects[0]
       @remain_seats = @traject.seats
       @stops = @traject.stops
+      @stop = @stops[0]
 
       @pending_requests = 0
       @stops.each do |stop|
@@ -91,8 +92,8 @@ class UsersController < ApplicationController
     gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
-      # marker.json({ :id => stop.id })
-      # marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+      marker.json({ :id => stop.id })
+      marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
 
     end
     return gmap_hash

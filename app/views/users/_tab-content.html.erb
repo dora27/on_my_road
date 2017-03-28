@@ -25,21 +25,20 @@
 
 <div class="container-fluid navbar-marged">
   <div class="row-fluid">
-    <div class="col-xs-7">
+    <div class="col-xs-6">
       <% @stops.each_with_index do |stop, i| %>
-      <% if stop.status == "Pending" %>
-      <% j= 0 %>
-        <div class="card-flexbox hidden" id="message-<%= i %>">
-          <%= render 'stop-card', stop: stop, i: i %>
+        <% if stop.status == "Pending" %>
+          <div class="card-flexbox hidden" id="message-<%= i %>">
+            <%= render 'stop-card', stop: stop, i: i %>
+          </div>
+        <% end %>
       <% end %>
-      </div>
-      <% end %>
-      <% if j= 0 %>
+      <% if @pending_requests.zero? %>
         <h4>Vous n'avez pas de nouvelles demandes</h4>
       <% end %>
    </div>
 
-    <div class="col-xs-5">
+    <div class="col-xs-6">
       <%= render 'stop-gmap' %>
     </div>
 
@@ -65,7 +64,6 @@
 
   </script>
 <% end %>
-</div>
 <% end %>
 
 <!-- Tab Profile -->
