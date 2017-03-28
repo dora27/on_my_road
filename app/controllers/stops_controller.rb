@@ -43,15 +43,15 @@ private
       params.require(:stop).permit(:occurs_at, :address, :status)
     end
 
-   def google_map(stops)
-    stops = Stop.where.not(latitude: nil, longitude: nil)
-    gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
-      marker.lat stop.latitude
-      marker.lng stop.longitude
-      marker.json({ :id => stop.id })
-      marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+  #  def google_map(stops)
+  #   stops = Stop.where.not(latitude: nil, longitude: nil)
+  #   gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
+  #     marker.lat stop.latitude
+  #     marker.lng stop.longitude
+  #     marker.json({ :id => stop.id })
+  #     marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
 
-    end
-    return gmap_hash
-  end
+  #   end
+  #   return gmap_hash
+  # end
 end
