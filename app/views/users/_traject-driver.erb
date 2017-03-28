@@ -1,0 +1,68 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-6 contenu-traject">
+        <h1>Ton trajet</h1>
+        <div class="row start-driver">
+          <div class="col-md-2"><p><%= @traject.start_time %> </p></div>
+          <div class="col-md-1"><i class="fa fa-flag fa-2x start-flag" style="color: green"></i> </div>
+          <div class="col-md-9">
+            <h4><%= @start_address %></h4>
+          </div>
+        </div>
+        <div class="row stop-driver">
+          <div class="col-md-2"><p><%= @stop.occurs_at %> </p></div>
+          <div class="col-md-1"><i class="fa fa-map-marker fa-2x" style="color: purple"></i></div>
+          <div class="col-md-9"><h4><%= @stop.stop_address %> </h4>
+          <p><em> <%= User.find(@stop.user_id).first_name %> <%= User.find(@stop.user_id).last_name %> </em> | <em><%= User.find(@stop.user_id).phone %></em></p></div>
+        </div>
+        <div class="row end-driver">
+          <div class="col-md-2"><p><%= @stop.end_time %> </p></div>
+          <div class="col-md-1"><i class="fa fa-flag-checkered fa-2x" style="color: red"></i></div>
+          <div class="col-md-9"><h4>Les Vieilles Charrues</h4></div>
+        </div>
+
+          <!-- <p>Départ: <%= @start_address %></p>
+          <p><%= @traject.start_time %> </p>
+          <p> Etape 1: <%= @stop.stop_address %> </p>
+          <p> <%= User.find(@stop.user_id).first_name %> <%= User.find(@stop.user_id).last_name %> </p>
+          <p><%= @stop.occurs_at %> </p>
+          <p>Arrivée: Les Vieilles Charrues </p>
+          <p> <%= @stop.end_time %></p> -->
+
+      </div>
+      <div class="col-xs-12 col-md-6 map-traject">
+        <div id="map-traject-driver" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.ticket-address').textfill({
+        maxFontPixels: 14
+       });
+      $('.ticket-city').textfill({
+        maxFontPixels: 37
+      });
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map-traject-driver' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+
+  <% end %>
+<% end %>
+
+
+
+
