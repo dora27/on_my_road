@@ -1,0 +1,93 @@
+$gold: #FFB900;
+$coral: #FC636B;
+$brightCoral: #FF6D92;
+
+#page {
+  $opacity: 90%;
+  align-items: center;
+  background-color: rgba(0,36,61,1);
+  // background-image: linear-gradient(-225deg, rgba(89, 60, 250, 1), rgba(60, 250, 238, 1) 0%, rgba(0, 36, 61, 1) 60%);
+  // background: linear-gradient(
+  //                 to top right,
+  //                 mix($coral, white, $opacity) 10%,
+  //                 mix($brightCoral, white, $opacity) 65%,
+  //                 mix($gold, white, $opacity) 125%);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: opacity 1s;
+  z-index: 100;
+  height: 100vh;
+}
+
+
+#phrase_box {
+  display: flex;
+  flex-flow: column;
+  height: 150px;
+  overflow: hidden;
+  width: 260px;
+}
+
+#phrases {
+  animation: slide-phrases-upward 30s;
+}
+
+#footer {
+  bottom: 30px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+}
+
+@keyframes slide-phrases-upward {
+  @for $i from 0 through 20 {
+    #{$i * 5%} {
+      transform: translateY($i * -50px);
+    }
+  }
+}
+
+@for $i from 0 through 20 {
+  #loadingCheckCircleSVG-#{$i} {
+    animation: fill-to-white 3000ms;
+    animation-delay: ($i - 1.5) * 1.5s;
+    fill: white;
+    opacity: 0;
+  }
+}
+@keyframes fill-to-white {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@for $i from 0 through 20 {
+  #loadingCheckSVG-#{$i} {
+    animation: fill-to-coral 3000ms;
+    animation-delay: ($i - 1.5) * 1.5s;
+  }
+}
+@keyframes fill-to-coral {
+  0% {
+    fill: white;
+  }
+  10% {
+    fill: $brightCoral;
+  }
+  100% {
+    fill: $brightCoral;
+  }
+}

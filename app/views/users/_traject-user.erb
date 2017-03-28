@@ -7,7 +7,7 @@
   <!-- traject ticket -->
       <div class="row card-ticket">
           <!-- image travel -->
-        <div class="col-xs-12 col-md-3 nopadding photo-ticket" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');">
+        <div class="col-xs-12 col-md-3 nopadding photo-ticket-traject" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');">
        </div>
 
           <!-- information travel -->
@@ -58,41 +58,35 @@
 
             <!-- driver and passengers presentation -->
             <div class="row ticket-driver">
-              <div class="col-xs-12 text-center"> <h4 id="status"> <%=  @user_stop.status %></h4> </div>
-              <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div>
+              <div class="container-driver">
+                <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12 driver-name-traject">
+                        <b><p> <%= @driver.first_name %> <%= @driver.last_name %></p></b>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12"><em> <p><%= @start_address %></p></em></div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12 col-md-12"><em><p><%= @traject.description %></p></em></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div> -->
             </div>
+              <div class="col-xs-12 text-center">
+                <h4 id="status"> <%=  @user_stop.status %></h4>
+              </div>
+
           </div>
       </div>
 
 
             <!-- Info Driver -->
-            <div class="container-driver">
-            <div class="row">
-              <div class="col-xs-12 col-md-3"> </div>
-              <div class="col-xs-12 col-md-9">
-              <div class="row text-center"><h3> Info Driver </h3></div>
-              <div class="row">
-                <div class="col-xs-12 col-md-3"><h4> Driver </h4></div>
-                <div class="col-xs-12 col-md-9">
-                  <p> <%= @driver.first_name %> <%= @driver.last_name %></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-md-3"><h4>Adresse</h4></div>
-                <div class="col-xs-12 col-md-9"><p><%= @start_address %></p></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-md-3"><h4>Téléphone</h4></div>
-                <div class="col-xs-12 col-md-9"><p><%= @driver.phone %></p></div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12 col-md-3"><h4>Description</h4> </div>
-                <div class="col-xs-12 col-md-9"><p><%= @traject.description %></p></div>
-              </div>
-              </div>
 
-            </div>
-            </div>
         </div>
 
   <!-- Google map traject -->

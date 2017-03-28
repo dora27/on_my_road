@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-9 contenu-traject">
+        <h1>Ton trajet</h1>
+          <% i = 0 %>
+          <p>Départ: <%= @start_address %></p>
+          <% @stops.each do |stop| %>
+            <% i+=1 %>
+            <p> Etape <%= i %> <%= stop.stop_address %> </p>
+            <p> <%= User.find(stop.user_id).first_name %> <%= User.find(stop.user_id).last_name %> </p>
+            <p><%= stop.occurs_at %> </p>
+          <%end%>
+          <p>Arrivée: <%= @charrues %> </p>
+      </div>
+      <div class="col-xs-12 col-md-3 map-traject">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.ticket-address').textfill({
+        maxFontPixels: 14
+       });
+      $('.ticket-city').textfill({
+        maxFontPixels: 37
+      });
+      var handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'map' } }, function() {
+        markers = handler.addMarkers(<%= raw @hash.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+        if (markers.length == 0) {
+          handler.getMap().setZoom(2);
+        } else if (markers.length == 1) {
+          handler.getMap().setZoom(14);
+        }
+      });
+    });
+
+  <% end %>
+<% end %>
+
+
+
+

@@ -23,8 +23,10 @@ class StopsController < ApplicationController
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
+
     StopMailer.validation(@stop).deliver_now
-    redirect_to traject_path(@traject)
+    redirect_to user_path(@user)
+    
   end
 
   def update
