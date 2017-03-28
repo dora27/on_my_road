@@ -10,7 +10,7 @@ Routific.setToken(ENV['ROUTIFIC'])
 
 #Upload Drivers
 fleet = {}
-depart_time = "8:00"
+# depart_time = "11:00"
 
 
 CSV.foreach("#{Rails.root.to_s}/public/sample-driver.csv", {:col_sep => ";"}) do |row|
@@ -34,7 +34,7 @@ CSV.foreach("#{Rails.root.to_s}/public/sample-driver.csv", {:col_sep => ";"}) do
 
   hsh[:start_location] = hsh_start
   hsh[:end_location] = hsh_end
-  hsh[:shift_start] = depart_time
+  hsh[:shift_start] = row[3]
 
   fleet[row[0].to_sym] = hsh
 end
