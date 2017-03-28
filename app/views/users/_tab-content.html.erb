@@ -45,8 +45,8 @@
 
 <!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
-    <h2><b>Bonjour <%= @user.first_name %></b></h2>
-    <br>
+      <h2><b>Bonjour <%= @user.first_name %></b></h2>
+      <br>
     <div class="col-xs-12 col-lg-4">
     <% if @user.photo %>
     <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
@@ -58,13 +58,16 @@
     </button>
     </div>
     <div class="col-lg-5 ">
-    <% if @user.first_name %>
-    <h4>Prenom: <%= @user.first_name %></h4>
-    <% end %>
-    <% if @user.last_name %>
-    <h4>Nom: <%= @user.last_name %></h4>
-    <% end %>
-    <h4>Email: <%= @user.email %></h4>
+      <% if @user.first_name %>
+        <h4>Prenom: <%= @user.first_name %></h4>
+      <% end %>
+      <% if @user.last_name %>
+        <h4>Nom: <%= @user.last_name %></h4>
+      <% end %>
+      <h4>Email: <%= @user.email %></h4>
+      <% if @user.phone %>
+        <h4>Phone: <%= @user.phone %></h4>
+      <% end %>
     </div>
 
 <!-- Modal -->

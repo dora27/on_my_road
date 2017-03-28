@@ -20,7 +20,7 @@ stegre.save
 url = "http://lorempixel.com/400/400/people/2/"
 stegre.photo_url = url
 
-quentin = User.new(email: "quentinbeau@gmail.com", password: "lewagon3", first_name: "Quentin", last_name: "BoV", phone: "0634569345")
+quentin = User.new(email: "quentin@gmail.com", password: "lewagon3", first_name: "Quentin", last_name: "BoV", phone: "0634569345")
 quentin.save
 url = "http://lorempixel.com/400/400/people/3/"
 quentin.photo_url = url
@@ -36,11 +36,11 @@ url = "http://lorempixel.com/400/400/people/5/"
 alix.photo_url = url
 
 #Creation des trajets associés
-Traject.new(seats: 3, starting_address: "12 Boulevard Carnot, 72100 Le Mans" ,luggage: 1 ,description: "Swag, fresh and style", user_id: simon.id).save
-Traject.new(seats: 3, starting_address: "62 Boulevard du Roi Rene, 49100 Angers" ,luggage: 7 ,description: "J'ai une barbe, j'aime les plantes et le cannabis : je suis un hippie", user_id: stegre.id).save
-Traject.new(seats: 3, starting_address: "53 Rue Paul Bellamy, 44000 Nantes" ,luggage: 3 ,description: "J'aime beaucoup Nantes et la techno", user_id: quentin.id).save
-Traject.new(seats: 3, starting_address: "4 Rue Saint-Martin, 14000 Caen" ,luggage: 2, user_id: dora.id).save
-Traject.new(seats: 3, starting_address: "56 Avenue de Guerland, Paimpol" ,luggage: 3 ,description: "J'aime l'alcool, la mer et les vieilles charrues: je suis bretonne", user_id: alix.id).save
+Traject.new(seats: 3, starting_address: "12 Boulevard Carnot, 72100 Le Mans" ,start_time: "12:00" ,luggage: 1 ,description: "Swag, fresh and style", user_id: simon.id).save
+Traject.new(seats: 3, starting_address: "62 Boulevard du Roi Rene, 49100 Angers" ,start_time: "09:20" ,luggage: 7 ,description: "J'ai une barbe, j'aime les plantes et le cannabis : je suis un hippie", user_id: stegre.id).save
+Traject.new(seats: 3, starting_address: "53 Rue Paul Bellamy, 44000 Nantes" ,start_time: "10:40",luggage: 3 ,description: "J'aime beaucoup Nantes et la techno", user_id: quentin.id).save
+Traject.new(seats: 3, starting_address: "4 Rue Saint-Martin, 14000 Caen" ,start_time: "11:30",luggage: 2, user_id: dora.id).save
+Traject.new(seats: 3, starting_address: "56 Avenue de Guerland, Paimpol" ,start_time: "14:00",luggage: 3 ,description: "J'aime l'alcool, la mer et les vieilles charrues: je suis bretonne", user_id: alix.id).save
 
 
 puts "Seed OK"
