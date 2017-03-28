@@ -1,19 +1,12 @@
 $(document).ready(function() {
 $(function(){
 
-  // var id = location.hash
-
-  // $(".active").removeClass("active")
-
-  // $(id).addClass("active")
-
   $(".form").on("submit", function(e){
       // Change active tab
       $(".tab").removeClass('active');
       $("#profile").removeClass('hidden');
       $("#profile").addClass('active');
     });
-
 
   $(".tab").on("click", function(e){
     // Change active tab

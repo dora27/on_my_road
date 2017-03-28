@@ -12,9 +12,6 @@ class UsersController < ApplicationController
     @user = find_user
 
     #show/traject
-     #info sur le depart
-
-
     #info sur l arrivee
     @charrues = "Dépendances de Persivien, Carhaix"
     @charrues_geo = Geocoder.search(@charrues)[0]
@@ -44,17 +41,19 @@ class UsersController < ApplicationController
         marker.lng traject.longitude
       end
 
-    #Driver
+    #if Driver
     else @user.trajects
       @traject = @user.trajects[0]
       @remain_seats = @traject.seats
       @stops = @traject.stops
+
       @pending_requests = 0
       @stops.each do |stop|
         @remain_seats -= 1 if stop.status == "Accepted"
         @pending_requests += 1 if stop.status == "Pending"
       end
       @hash = google_map(@stops)
+
     end
     @start_address = @traject.starting_address
   end
@@ -81,19 +80,19 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :photo)
+    params.require(:user).permit(:first_name, :last_name, :email, :phone, :photo)
   end
 
   def split_address(address)
     address.split(',').map {|string| string.strip}
   end
   def google_map(stops)
-    stops = Stop.where.not(latitude: nil, longitude: nil)
+    # stops = Stop.where.not(latitude: nil, longitude: nil)
     gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
-      marker.json({ :id => stop.id })
-      marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+      # marker.json({ :id => stop.id })
+      # marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
 
     end
     return gmap_hash

@@ -1,6 +1,5 @@
 class TrajectsController < ApplicationController
   def show
-
     # Data
     @traject = Traject.find(params[:id])
     authorize @traject
