@@ -1,0 +1,7 @@
+<% if stop.status == "Pending" %>
+  <p class="status-position" style="color:#efb73e">Pending</p>
+<% elsif stop.status == "Refused" %>
+  <p class="status-position" style="color:red">Refused</p>
+<% else %>
+ <p class="status-position" style="color:green">Accepted</p>
+<% end %>
