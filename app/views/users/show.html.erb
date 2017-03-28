@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@user.name} is on #{DEFAULT_META["title"]}" %>
+<% content_for :meta_description, @user.description %>
+<% content_for :meta_description, cloudinary_url(@user.photo.path) %>
+
 <div id="dashboard">
   <div id="dashboard-menu">
     <%= render "tabs" %>

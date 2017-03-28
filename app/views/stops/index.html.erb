@@ -1,10 +1,13 @@
+<% content_for :meta_title, "#{@traject.name} is on #{DEFAULT_META["title"]}" %>
+<% content_for :meta_description, @traject.description %>
+<% content_for :meta_description, cloudinary_url(@traject.photo.path) %>
+
 <div class="wrapper-messages">
 <div class="header-messages navbar-marged">
 <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
 <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
 
 </div>
-
   <div class="container-fluid navbar-marged">
     <div class="row-fluid">
       <div class="col-xs-7">
