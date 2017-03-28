@@ -1,0 +1,32 @@
+<% passenger = stop.user %>
+<div class="card-element">
+  <% if passenger.photo %>
+    <%= cl_image_tag passenger.photo.path, class: "avatar-large" %>
+  <% end %>
+</div>
+
+<div class="card-element">
+  <h4><%= passenger.first_name + " " + passenger.last_name %></h4>
+</div>
+
+<div class="card-element">
+  <p class= "message-style">"<%= stop.message %>"</p>
+</div>
+
+<div class="flex-btn">
+ <%= simple_form_for ([@traject, stop]) do |f| %>
+    <button class="card-btn" type="submit" name ="status" value="Accepted" data-id="<%= i %>"><i class= "fa fa-thumbs-up"></i></button>
+    <button class="card-btn" type="submit" name="status" value="Refused" data-id="<%= i %>"><i class= "fa fa-thumbs-down"></i></button>
+  <% end %>
+</div>
+
+<div class="status-position">
+  <% if stop.status == "Pending" %>
+    <p style="color:#efb73e">Pending</p>
+  <% elsif stop.status == "Refused" %>
+    <p style="color:red">Refused</p>
+  <% else %>
+   <p style="color:green">Accepted</p>
+  <% end %>
+</div>
+

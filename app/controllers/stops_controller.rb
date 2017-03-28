@@ -23,25 +23,32 @@ class StopsController < ApplicationController
     @stop.save
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
-    redirect_to traject_path(@traject)
+
+    StopMailer.validation(@stop).deliver_now
+    redirect_to user_path(@user)
+    
   end
 
   def update
     stop = Stop.find(params[:id])
-    stop.update(stop_params)
+    if params[:status] == 'Accepted'
+      stop.update(status: params[:status])
+    elsif params[:status] == 'Refused'
+      stop.update(status: params[:status])
+    end
     authorize stop
     # redirect_to traject_stops_path
   end
 
 private
 
-    def stop_params
+  def stop_params
       params.require(:stop).permit(:occurs_at, :address, :status)
-    end
+  end
 
-   def google_map(stops)
+  def google_map(stops)
     stops = Stop.where.not(latitude: nil, longitude: nil)
-    gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
+    gmap_hash = Gmaps4rails.build_markers(stops) do |stop,  marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
       marker.json({ :id => stop.id })
@@ -50,4 +57,6 @@ private
     end
     return gmap_hash
   end
+
+
 end

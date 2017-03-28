@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_many :trajects
+  has_many :trajects, dependent: :destroy
   has_one :stop
   has_attachment :photo
   # Include default devise modules. Others available are:
