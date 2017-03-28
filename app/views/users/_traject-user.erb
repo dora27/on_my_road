@@ -78,7 +78,13 @@
               <!-- <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div> -->
             </div>
               <div class="col-xs-12 text-center">
-                <h4 id="status"> <%=  @user_stop.status %></h4>
+               <% if @user_stop.status == "Pending" %>
+                <p class="status" style="color:#efb73e">Pending</p>
+              <% elsif @user_stop.status == "Refused" %>
+                <p class="status" style="color:red">Refused</p>
+              <% elsif @user_stop.status == "Accepted"%>
+               <p class="status" style="color:green">Accepted</p>
+              <% end %>
               </div>
 
           </div>
