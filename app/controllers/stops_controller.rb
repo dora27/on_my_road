@@ -57,6 +57,4 @@ private
     end
     return gmap_hash
   end
-
-
 end

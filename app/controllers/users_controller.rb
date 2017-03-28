@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       @pending_requests = 0
       @stops.each do |stop|
         @remain_seats -= 1 if stop.status == "Accepted"
-        @pending_requests += 1 if stop.status = "Pending"
+        @pending_requests += 1 if stop.status == "Pending"
       end
       @hash = google_map(@stops)
 

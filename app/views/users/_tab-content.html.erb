@@ -27,9 +27,15 @@
   <div class="row-fluid">
     <div class="col-xs-7">
       <% @stops.each_with_index do |stop, i| %>
+      <% if stop.status == "Pending" %>
+      <% j= 0 %>
         <div class="card-flexbox hidden" id="message-<%= i %>">
           <%= render 'stop-card', stop: stop, i: i %>
+      <% end %>
       </div>
+      <% end %>
+      <% if j= 0 %>
+        <h4>Vous n'avez pas de nouvelles demandes</h4>
       <% end %>
    </div>
 
