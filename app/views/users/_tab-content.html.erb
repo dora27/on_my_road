@@ -14,7 +14,6 @@
     </div>
   <%end%>
 
-
 <!-- Driver -->
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
@@ -43,9 +42,6 @@
 <% end  %>
 
 </div>
-
-
-
 
 <!-- Tab Profile -->
     <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
@@ -85,6 +81,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+
             <%= f.submit "Enregistrer les modifications", class: "btn btn-primary btn-purple" %>
 
             </div>
@@ -92,5 +89,3 @@
       </div>
     </div>
   </div>
-
-
