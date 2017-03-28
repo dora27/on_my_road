@@ -46,6 +46,7 @@ class UsersController < ApplicationController
       @traject = @user.trajects[0]
       @remain_seats = @traject.seats
       @stops = @traject.stops
+      @stop = @stops[0]
 
       @pending_requests = 0
       @stops.each do |stop|
