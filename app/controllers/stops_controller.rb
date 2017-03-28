@@ -31,7 +31,11 @@ class StopsController < ApplicationController
 
   def update
     stop = Stop.find(params[:id])
-    stop.update(stop_params)
+    if params[:status] == 'Accepted'
+      stop.update(status: params[:status])
+    elsif params[:status] == 'Refused'
+      stop.update(status: params[:status])
+    end
     authorize stop
     # redirect_to traject_stops_path
   end

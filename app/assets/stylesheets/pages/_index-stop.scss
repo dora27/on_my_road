@@ -10,7 +10,11 @@
   text-shadow: 1px 1px 1px black;
 }
 
-.message-container {
+.card-flexbox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   border: 0.5px solid grey;
   border-width: thin;
   border-radius: 7px;
@@ -19,32 +23,20 @@
   background-color: white;
 }
 
-.message-container:hover{
+.card-flexbox:hover{
   box-shadow: 0 0 7px green;
 }
 
+.card-element {
+}
 
-.date-position {
-  padding-top: 9px;
-}
-.message-position {
-  padding-top: 15px;
-}
 
 .status-position {
-  position : absolute;
-  top: 3px;
-  right: 8px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
 
-.button-position {
-  position: relative;
-  top: 15px;
-}
-
-.padding-row {
-  padding-bottom: 15px;
-}
 
 .message-style {
   font-size: 18px;
@@ -52,6 +44,25 @@
   font-family: Helvetica;
 }
 
-.no-padding {
-  padding: 0;
+.flex-btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
+
+.card-btn {
+  border-radius: 50%;
+  border-style: none;
+
+}
+
+.fa-thumbs-up {
+  font-size: 45px;
+  color: green;
+}
+
+.fa-thumbs-down {
+  font-size: 45px;
+  color: red;
+}
+
