@@ -111,17 +111,31 @@
         maxFontPixels: 37
       });
 
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
+      var myHome = { lat: <%= @address_search_geo.latitude %> , lng: <%= @address_search_geo.longitude %> }
+      var charrues = { lat: <%= @charrues_geo.latitude %> , lng: <%= @charrues_geo.longitude %> }
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 7,
+        center: charrues
       });
+
+      directionsDisplay.setMap(map);
+      calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: myHome,
+          destination: charrues,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
     });
 
   <% end %>

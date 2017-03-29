@@ -4,6 +4,7 @@
   <!-- Tab Home - the passenger view -->
   <!-- Passager -->
   <% if @user.trajects.empty? == true  %>
+
     <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
       <%= render "traject-user" %>
     </div>
