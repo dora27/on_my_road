@@ -1,9 +1,66 @@
-.card-ticket {
-  border-radius: 10px;
-  border: #e2e7ec 1px solid;
-  // box-shadow: 1px 1px 2px #737373;
-  // height: 315px;
+.requests-show h1 {
+  color: white;
+  font-size: 25px;
+  text-transform: uppercase;
 }
+.card-ticket {
+  display: flex;
+  border-radius: 10px;
+  background: white;
+}
+
+.card-ticket-image {
+  flex: 0 0 30%;
+  background-size: cover;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.card-ticket-description {
+  padding: 50px 20px 20px 20px;
+  width: 100%;
+  position: relative;
+  hr {
+    width: 70%;
+  }
+}
+
+.card-ticket-price {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 18px;
+  background: black;
+  color: white;
+  padding: 10px;
+  .ticket-price {
+   font-size: 22px;
+  }
+}
+
+.card-ticket-traject {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h2 {
+    margin-top: 0;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.card-ticket-traject-hours {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.card-ticket-driver {
+  margin-right: 11px;
+  margin-bottom: -25px;
+}
+
 
 .photo-ticket{
   // display: flex;
@@ -14,6 +71,7 @@
   border-bottom-left-radius: 10px;
 }
 
+// old version
 .ticket-city {
   font-size: 37px;
   padding-top: 8px;
@@ -27,11 +85,6 @@
 .ticket-hours {
   font-size: 40px;
   font-weight: 200;
-}
-
-.ticket-price {
-  font-size: 38px;
-  padding: 85px 0;
 }
 
 #logo-road {

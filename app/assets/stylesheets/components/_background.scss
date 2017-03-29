@@ -1,0 +1,11 @@
+.bg-fixed {
+  background-image: url(https://images.unsplash.com/photo-1470229538611-16ba8c7ffbd7?dpr=1.600000023841858&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=);
+  background-size: cover;
+  filter: blur(5px);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: -1;
+}

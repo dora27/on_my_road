@@ -9,9 +9,9 @@ pour les Vieilles Charrues 2017</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= stylesheet_link_tag 'application', media: 'all' %>
   </head>
-  <body>
-    <%= render 'shared/navbar' unless @navbar_home %>
-    <%= render 'shared/navbar_home' if @navbar_home %>
+  <body class="<%= controller_name %>-<%= action_name %>">
+    <%#= render 'shared/navbar' unless @navbar_home %>
+    <%= render 'shared/navbar_home' %> <!-- ajouter "if @navbar_home" pour deux navbar -->
     <%= render 'shared/flashes' %>
     <%= yield %>
     <%= render 'shared/footer' %>
