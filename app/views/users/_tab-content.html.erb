@@ -36,7 +36,7 @@
 <div class="container-fluid requests-show">
   <div class="row-fluid">
     <div class="col-xs-7">
-      <h1>Vos requêtes (<%= @pending_requests %>)</h1>
+      <h1>Vos requêtes (<span id="request-count"><%= @pending_requests %></span>)</h1>
       <% @stops.each_with_index do |stop, i| %>
         <% if stop.status == "Pending" %>
           <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
@@ -44,6 +44,9 @@
           </div>
         <% end %>
       <% end %>
+      <div class="card-flexbox hidden" id="message-<%= @pending_requests %>" data-id="<%= @pending_requests %>">
+        <h4>Vous avez traité toutes vos requêtes</h4>
+      </div>
       <% if @pending_requests.zero? %>
         <h4>Vous n'avez pas de nouvelles demandes</h4>
       <% end %>

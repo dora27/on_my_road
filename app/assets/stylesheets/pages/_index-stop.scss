@@ -27,7 +27,7 @@
 }
 
 .card-flexbox:hover{
-  box-shadow: 0 0 20px green;
+  box-shadow: 0 0 20px $purple;
 }
 
 
@@ -59,5 +59,21 @@
 
 .card-element h2 {
   font-weight: bold;
+}
+
+.address-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.no-margin-h {
+  margin: 0;
+}
+
+.occurs {
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
