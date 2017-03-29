@@ -11,60 +11,58 @@
           </div>
         </div>
         <% if @stop.status == "Accepted" %>
-        <div class="row stop-driver">
-          <div class="col-md-2"><p><%= @stop.occurs_at %> </p></div>
-          <div class="col-md-1"><i class="fa fa-map-marker fa-2x" style="color: purple"></i></div>
-          <div class="col-md-9"><h4><%= @stop.stop_address %> </h4>
-          <p><em> <%= User.find(@stop.user_id).first_name %> <%= User.find(@stop.user_id).last_name %> </em> | <em><%= User.find(@stop.user_id).phone %></em></p></div>
-        </div>
+          <div class="row stop-driver">
+            <div class="col-md-2"><p><%= @stop.occurs_at %> </p></div>
+            <div class="col-md-1"><i class="fa fa-map-marker fa-2x" style="color: purple"></i></div>
+            <div class="col-md-9"><h4><%= @stop.stop_address %> </h4>
+            <p><em> <%= User.find(@stop.user_id).first_name %> <%= User.find(@stop.user_id).last_name %> </em> | <em><%= User.find(@stop.user_id).phone %></em></p></div>
+          </div>
         <% end %>
         <div class="row end-driver">
           <div class="col-md-2"><p><%= @stop.end_time %> </p></div>
           <div class="col-md-1"><i class="fa fa-flag-checkered fa-2x" style="color: red"></i></div>
           <div class="col-md-9"><h4>Les Vieilles Charrues</h4></div>
         </div>
-
       </div>
       <div class="col-xs-12 col-md-6 map-traject">
         <div id="map-traject-driver" style="width: 100%; height: 400px;"></div>
       </div>
     </div>
   </div>
+
+
   <div class="row">
-      <div class="col-md-6">
-        <h3> Messages </h3>
+    <div class="col-md-6">
+      <h3> Messages </h3>
 
-        <% @reviews.each do |review| %>
-          <div class="row">
-            <div class="col-md-2">
-              <p><%= review.created_at.strftime("%I:%M%p") %></p>
-            </div>
-            <div class="col-md-4">
-              <p><%= review.user.first_name %> <%= review.user.last_name %></p>
-            </div>
-            <div class="col-md-6">
-              <p><%= review.content %></p>
-            </div>
+      <% @reviews.each do |review| %>
+        <div class="row">
+          <div class="col-md-2">
+            <p><%= review.created_at.strftime("%I:%M%p") %></p>
           </div>
+          <div class="col-md-4">
+            <p><%= review.user.first_name %> <%= review.user.last_name %></p>
+          </div>
+          <div class="col-md-6">
+            <p><%= review.content %></p>
+          </div>
+        </div>
         <% end %>
-      </div>
+    </div>
       <div class="col-md-6"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+       <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
+          <%= form.input :content, as: :text %>
+          <%= form.button :submit %>
+        <% end %>
     </div>
-
-     <div class="row">
-       <div class="col-md-6">
-         <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
-            <%= form.input :content, as: :text %>
-            <%= form.button :submit %>
-          <% end %>
-       </div>
-       <div class="col-md-6"></div>
-     </div>
-    </div>
-
-
-
+    <div class="col-md-6"></div>
+  </div>
 </div>
+
 
 <% content_for(:after_js2) do %>
   <%= javascript_tag do %>
