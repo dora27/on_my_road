@@ -93,29 +93,19 @@
       <!-- Reviews -->
     <div class="row">
       <div class="col-md-3"></div>
-      <div class="col-md-9">
+      <div class="col-md-9 reviews-container">
         <h3> Messages </h3>
 
         <% @reviews.each do |review| %>
-          <div class="row">
-            <div class="col-md-2">
-              <p><%= review.created_at.strftime("%I:%M%p") %></p>
-            </div>
-            <div class="col-md-4">
-              <p><%= review.user.first_name %> <%= review.user.last_name %></p>
-            </div>
-            <div class="col-md-6">
-              <p><%= review.content %></p>
-            </div>
-          </div>
+          <%= render 'review', review: review %>
         <% end %>
       </div>
     </div>
 
      <div class="row">
        <div class="col-md-3"></div>
-       <div class="col-md-9">
-         <%= simple_form_for([ @traject, @review ]) do |form| %>
+       <div class="col-md-9 form-review">
+         <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
             <%= form.input :content, as: :text %>
             <%= form.button :submit %>
           <% end %>

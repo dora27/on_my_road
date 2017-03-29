@@ -5,9 +5,8 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.traject = @traject
     @review.user = @user
-    @review.save
     authorize @review
-    redirect_to user_path(@user)
+    @review.save
   end
 
   private

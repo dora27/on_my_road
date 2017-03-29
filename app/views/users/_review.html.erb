@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-5">
+    <p><%= review.user.first_name %><%= review.user.last_name %>   | <em><%= review.created_at.strftime("%I:%M%p") %></em></p>
+  </div>
+  <div class="col-md-7 review-content">
+    <p><%= review.content %></p>
+  </div>
+</div>
