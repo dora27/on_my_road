@@ -16,7 +16,7 @@ simon.save
 url = "http://lorempixel.com/400/400/people/1/"
 simon.photo_url = url
 
-stegre = User.new(email: "virtualflow@gmail.com", password: "lewagon2", first_name: "VirtualFlow", last_name: "Stegre", phone: "0623752788")
+stegre = User.new(email: "stegre@gmail.com", password: "lewagon2", first_name: "VirtualFlow", last_name: "Stegre", phone: "0623752788")
 stegre.save
 url = "http://lorempixel.com/400/400/people/2/"
 stegre.photo_url = url
