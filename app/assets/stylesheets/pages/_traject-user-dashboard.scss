@@ -1,3 +1,87 @@
 .review-content{
   text-align: left;
 }
+
+.message-chat {
+  display: block;
+  padding: 10px;
+  position: relative;
+  width: 100%;
+  color: white;
+  font-size: 15px;
+  background-color: $purple;
+  border-radius: 3px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  // content: '';
+  // position: absolute;
+  // top: 0;
+  // border-top: 17px solid #2ECC71;
+  // border-left: 17px solid transparent;
+  // border-right: 17px solid transparent;
+}
+
+.review-content:before {
+  content: '';
+  position: absolute;
+  border-top: 16px solid rgba(0, 0, 0, 0.15);
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+}
+
+.review-content:after {
+    content: '';
+    position: absolute;
+    bottom: 11px;
+    right: 2px;
+    border-bottom: 17px solid #9C1DE7;
+    /* border-left: 17px solid transparent; */
+    border-right: 17px solid transparent;
+}
+
+.petit-truc{
+
+
+}
+.chat-line {
+  display: flex;
+  align-items: flex-end;
+}
+
+.review-user {
+  padding: 0px;
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+.review-user-else {
+  padding: 0px;
+  text-align: right;
+  padding-bottom: 5px;
+}
+
+.review-content-else {
+  text-align: left;
+}
+
+.review-content-else:before {
+  content: '';
+  position: absolute;
+  border-top: 16px solid rgba(0, 0, 0, 0.15);
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+}
+
+.review-content-else:after {
+    content: '';
+    position: absolute;
+    bottom: 11px;
+    left: 2px;
+    border-bottom: 17px solid #9C1DE7;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+}
+
+.review-container {
+  background-color: white;
+  opacity: 0.5;
+}
