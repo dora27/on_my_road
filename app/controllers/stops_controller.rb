@@ -24,9 +24,10 @@ class StopsController < ApplicationController
     authorize @stop
     flash[:notice] = "Votre demande a bien été transmise."
 
-    StopMailer.validation(@stop).deliver_now
+    #StopMailer.validation(@stop).deliver_now
+
     redirect_to user_path(@user)
-    
+
   end
 
   def update
@@ -57,6 +58,4 @@ private
     end
     return gmap_hash
   end
-
-
 end

@@ -1,72 +1,67 @@
 <div class="container-fluid text-center">
 
 
-<!-- Tab Home - the passenger view -->
-<!-- Passager -->
+  <!-- Tab Home - the passenger view -->
+  <!-- Passager -->
   <% if @user.trajects.empty? == true  %>
     <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
       <%= render "traject-user" %>
     </div>
   <%else%>
-<!-- Driver -->
+    <!-- Driver -->
     <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
-    <%= render "traject-driver" %>
+      <%= render "traject-driver" %>
     </div>
-  <%end%>
+  <% end %>
+</div>
 
-<!-- Driver -->
-<% if @user.trajects.empty? == false  %>
-<!-- Tab Trajects - the driver view -->
-  <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-    <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
-    <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
-    <h2 class="text-center"> Ma voiture :</h2>
-    <div id="car-people"></div>
-
-<div class="container-fluid navbar-marged">
-  <div class="row-fluid">
-    <div class="col-xs-7">
-      <% @stops.each_with_index do |stop, i| %>
-        <div class="card-flexbox hidden" id="message-<%= i %>">
-          <%= render 'stop-card', stop: stop, i: i %>
+  <!-- Driver -->
+  <% if @user.trajects.empty? == false  %>
+  <!-- Tab Trajects - the driver view -->
+    <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
+      <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
+      <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
+      <h2 class="text-center"> Ma voiture :</h2>
+      <div class="car-people">
+        <% @stops.each do |stop| %>
+          <% if stop.status == "Accepted" %>
+            <% if stop.user.photo %>
+              <div >
+                <%= cl_image_tag stop.user.photo.path, class: "avatar-large" %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
-      <% end %>
-   </div>
 
-    <div class="col-xs-5">
-      <%= render 'stop-gmap' %>
+      <div class="container-fluid navbar-marged">
+        <div class="row-fluid">
+          <div class="col-xs-6">
+            <% @stops.each_with_index do |stop, i| %>
+              <% if stop.status == "Pending" %>
+                <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
+                  <%= render 'stop-card', stop: stop, i: i %>
+                </div>
+              <% end %>
+            <% end %>
+            <% if @pending_requests.zero? %>
+              <h4>Vous n'avez pas de nouvelles demandes</h4>
+            <% end %>
+          </div>
+          <div class="col-xs-6">
+            <%= render 'tab-requests' %>
+          </div>
+        </div>
+      </div>
     </div>
+  <% end %>
 
-  </div>
-</div>
-
-
-<% content_for :after_js do %>
-  <script>
-
-  $(document).ready(function() {
-    $("#message-0").removeClass('hidden');
-  });
-
-  $(".card-btn").on("click", function(){
-    var id = $(this).data("id");
-    $("#message-" + id).fadeOut(300, function() {
-    $("#message-" + id).addClass('hidden');
-    id += 1;
-    $("#message-" + id).fadeIn(400).removeClass('hidden');
-     });
-  });
-
-  </script>
-<% end %>
-</div>
-<% end %>
 
 <!-- Tab Profile -->
-    <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
-      <h2><b>Bonjour <%= @user.first_name %></b></h2>
-      <br>
-    <div class="col-xs-12 col-lg-4">
+<div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
+  <h2><b>Bonjour <%= @user.first_name %></b></h2>
+  <br>
+  <div class="col-xs-12 col-lg-4">
     <% if @user.photo %>
     <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
     <% end %>
@@ -75,22 +70,22 @@
     <button type="button" class="btn btn-primary btn-purple" data-toggle="modal" data-target="#edit-modal">
     Edit profile
     </button>
-    </div>
-    <div class="col-lg-5 ">
-      <% if @user.first_name %>
-        <h4>Prenom: <%= @user.first_name %></h4>
-      <% end %>
-      <% if @user.last_name %>
-        <h4>Nom: <%= @user.last_name %></h4>
-      <% end %>
-      <h4>Email: <%= @user.email %></h4>
-      <% if @user.phone %>
-        <h4>Phone: <%= @user.phone %></h4>
-      <% end %>
-    </div>
-    </div>
+  </div>
+  <div class="col-lg-5 ">
+    <% if @user.first_name %>
+      <h4>Prenom: <%= @user.first_name %></h4>
+    <% end %>
+    <% if @user.last_name %>
+      <h4>Nom: <%= @user.last_name %></h4>
+    <% end %>
+    <h4>Email: <%= @user.email %></h4>
+    <% if @user.phone %>
+      <h4>Téléphone: <%= @user.phone %></h4>
+    <% end %>
+  </div>
+</div>
 
-<!-- Modal -->
+  <!-- Modal -->
   <div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

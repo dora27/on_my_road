@@ -21,12 +21,12 @@
     <meta property="og:site_name" content="<%= meta_title %>" />
 
   </head>
-  <body>
-    <%= render 'shared/navbar' unless @navbar_home %>
-    <%= render 'shared/navbar_home' if @navbar_home %>
+  <body class="<%= controller_name %>-<%= action_name %>">
+    <%#= render 'shared/navbar' unless @navbar_home %>
+    <%= render 'shared/navbar_home' %> <!-- ajouter "if @navbar_home" pour deux navbar -->
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+
 
 
     <%= javascript_include_tag 'application' %>
@@ -36,5 +36,10 @@
     <%= cloudinary_js_config %>
 
     <%= yield(:after_js) %>
+    <%= yield(:after_js1) %>
+    <%= yield(:after_js2) %>
+    <%= yield(:after_js3) %>
+
+
   </body>
 </html>
