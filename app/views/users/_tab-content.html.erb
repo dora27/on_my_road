@@ -19,7 +19,7 @@
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
     <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
-    <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
+    <!-- <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2> -->
     <h2 class="text-center"> Ma voiture :</h2>
     <div class="car-people">
       <% @stops.each do |stop| %>
@@ -33,9 +33,10 @@
     <% end %>
     </div>
 
-<div class="container-fluid navbar-marged">
+<div class="container-fluid requests-show">
   <div class="row-fluid">
-    <div class="col-xs-6">
+    <div class="col-xs-7">
+      <h1>Vos requêtes (<%= @pending_requests %>)</h1>
       <% @stops.each_with_index do |stop, i| %>
         <% if stop.status == "Pending" %>
           <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
@@ -48,7 +49,7 @@
       <% end %>
    </div>
 
-    <div class="col-xs-6">
+    <div class="col-xs-5">
       <%= render 'tab-requests' %>
     </div>
 

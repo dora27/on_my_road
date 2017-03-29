@@ -1,24 +1,36 @@
 <% passenger = stop.user %>
-<div class="passenger-photo" data-id='<%= i %>'>
-  <% if passenger.photo %>
-    <%= cl_image_tag passenger.photo.path, class: "avatar-large" %>
-  <% end %>
-</div>
+<div class="row">
+  <div class="col-xs-4">
+    <div class="passenger-photo" data-id='<%= i %>'>
+      <% if passenger.photo %>
+        <%= cl_image_tag passenger.photo.path, class: "avatar-request" %>
+      <% end %>
+    </div>
+  </div>
 
-<div class="card-element">
-  <h4><%= passenger.first_name + " " + passenger.last_name %></h4>
-</div>
+  <div class="col-xs-8">
+  <div class="card-element">
+      <h2 class="text-center"><%= passenger.first_name + " " + passenger.last_name %></h2>
+  </div>
+    <div class="card-element">
+      <p class= "message-style text-center"><i class="fa fa-commenting-o"></i>"<%= stop.message %>"</p>
+    </div>
+    <hr>
+    <div class="card-element">
+      <h2 class= "message-style"><%= stop.stop_address %></h2>
+      <span><%= stop.occurs_at %></span>
+    </div>
 
-<div class="card-element">
-  <p class= "message-style">"<%= stop.message %>"</p>
-</div>
 
 <div class="flex-btn">
  <%= simple_form_for ([@traject, stop]) do |f| %>
-    <button class="card-btn accept-request" type="submit" name ="status" value="Accepted" data-id="<%= i %>"><i class= "fa fa-thumbs-up"></i></button>
-    <button class="card-btn" type="submit" name="status" value="Refused" data-id="<%= i %>"><i class= "fa fa-thumbs-down"></i></button>
+    <button class="card-btn accept-request btn btn-primary btn-purple" type="submit" name ="status" value="Accepted" data-id="<%= i %>">Accept</button>
+    <button class="card-btn btn btn-primary btn-red" type="submit" name="status" value="Refused" data-id="<%= i %>">Refuse</button>
   <% end %>
 </div>
+</div>
+</div>
+
 
 <div class="status-position">
   <% if stop.status == "Pending" %>

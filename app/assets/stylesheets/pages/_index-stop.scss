@@ -19,57 +19,45 @@
 
 .card-flexbox {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border: 0.5px solid grey;
+  // display: flex;
   border-width: thin;
-  border-radius: 7px;
+  border-radius: 10px;
   margin-bottom: 15px;
-  box-shadow: 3px 3px 3px black;
   background-color: white;
 }
 
 .card-flexbox:hover{
-  box-shadow: 0 0 7px green;
-}
-
-.card-element {
+  box-shadow: 0 0 20px green;
 }
 
 
 .status-position {
   position: absolute;
+  font-size: 20px;
   top: 10px;
   right: 10px;
 }
 
 
-.message-style {
-  font-size: 18px;
-  font-style: italic;
-  font-family: Helvetica;
-}
-
 .flex-btn {
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row;
   flex-direction: row;
-  justify-content: center;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
 }
 
-.card-btn {
-  border-radius: 50%;
-  border-style: none;
-
+.fa-commenting-o {
+  font-size: 20px;
+  margin-right: 10px;
 }
 
-.fa-thumbs-up {
-  font-size: 45px;
-  color: green;
+.passenger-photo {
+  align-items: center;
 }
 
-.fa-thumbs-down {
-  font-size: 45px;
-  color: red;
+.card-element h2 {
+  font-weight: bold;
 }
 
