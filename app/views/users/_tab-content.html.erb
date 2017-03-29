@@ -1,4 +1,4 @@
-<div class="container-fluid text-center">
+<div class="container-fluid">
 
 
   <!-- Tab Home - the passenger view -->
@@ -59,29 +59,35 @@
 
 <!-- Tab Profile -->
 <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >
-  <h2><b>Bonjour <%= @user.first_name %></b></h2>
-  <br>
-  <div class="col-xs-12 col-lg-4">
-    <% if @user.photo %>
-    <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
-    <% end %>
+  <div class="container">
+    <h1 class="h1-white">Bonjour <%= @user.first_name %></h1>
     <br>
-    <br>
-    <button type="button" class="btn btn-primary btn-purple" data-toggle="modal" data-target="#edit-modal">
-    Edit profile
-    </button>
-  </div>
-  <div class="col-lg-5 ">
-    <% if @user.first_name %>
-      <h4>Prenom: <%= @user.first_name %></h4>
-    <% end %>
-    <% if @user.last_name %>
-      <h4>Nom: <%= @user.last_name %></h4>
-    <% end %>
-    <h4>Email: <%= @user.email %></h4>
-    <% if @user.phone %>
-      <h4>Téléphone: <%= @user.phone %></h4>
-    <% end %>
+
+    <div class="card-ticket">
+      <div id="edit-profil">
+        <% if @user.photo %>
+        <%= cl_image_tag @user.photo.path, height: 200, width: 200, crop: :fit %>
+        <% end %>
+        <br>
+        <br>
+        <button type="button" class="btn btn-primary btn-purple-second" data-toggle="modal" data-target="#edit-modal">
+        Edit profile
+        </button>
+      </div>
+
+      <div>
+        <% if @user.first_name %>
+          <h4>Prenom: <%= @user.first_name %></h4>
+        <% end %>
+        <% if @user.last_name %>
+          <h4>Nom: <%= @user.last_name %></h4>
+        <% end %>
+        <h4>Email: <%= @user.email %></h4>
+        <% if @user.phone %>
+          <h4>Téléphone: <%= @user.phone %></h4>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

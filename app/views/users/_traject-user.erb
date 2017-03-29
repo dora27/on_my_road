@@ -1,94 +1,90 @@
- <h1 class = "text-center navbar-marged">Your best traject</h1>
+<!-- new ticket style -->
+  <div class="container">
+    <h1 class = "h1-white">Trajets commandés</h1>
+    <div class="marged-top">
+      <div class="col-xs-12 col-md-8">
 
-<div class="container">
-  <div class="row navbar-marged">
-    <div class="col-xs-12 col-md-8">
+<!-- new ticket flex box-->
+        <div class="card-ticket">
+          <div class="card-ticket-image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');"></div>
 
-  <!-- traject ticket -->
-      <div class="row card-ticket">
-          <!-- image travel -->
-        <div class="col-xs-12 col-md-3 nopadding photo-ticket-traject" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');">
-       </div>
-
-          <!-- information travel -->
-          <div class="col-xs-12 col-md-9">
-            <div class="row text-center">
-            <!-- depart information -->
-              <div class="col-xs-12 col-md-10 border-right">
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-city text-center"><%= @town %> </p>
-                  </div>
-                  <div class="col-xs-12 col-md-2">
-                    <i class="fa fa-road fa-3x" id="logo-road" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-city text-center">Vieilles Charrues</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-address"><%= @address_passenger %></p>
-                  </div>
-                  <div class="col-xs-12 col-md-2">
-
-                  </div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-address"><%= @charrues %></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-hours"><%= @stop_time %></p>
-                  </div>
-                  <div class="col-xs-12 col-md-2"></div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-hours"><%= @end_time %></p>
-                  </div>
-                </div>
+          <!-- description -->
+          <div class="card-ticket-description">
+            <!-- pricing -->
+            <div class="card-ticket-price">
+              <span class="ticket-price">15€</span>
+            </div>
+            <!-- information depart -->
+            <div class="card-ticket-traject">
+              <div class="card-ticket-traject-detail">
+                <h2><%= @town %></h2>
+                <p><%= @address_passenger %></p>
               </div>
-
-              <!-- price information -->
-              <div class="col-xs-12 col-md-2 text-center">
-                <div class="card">
-                  <span class="ticket-price">15€</span>
-                </div>
+              <div class="card-ticket-traject-hours">
+                <span><%= @stop_time %></span>
               </div>
             </div>
+            <hr>
 
-            <!-- driver and passengers presentation -->
-            <div class="row ticket-driver">
-              <div class="container-driver">
-                <div class="row">
-                  <div class="col-xs-12 col-md-12">
-                    <div class="row">
-                      <div class="col-xs-12 col-md-12 driver-name-traject">
-                        <b><p> <%= @driver.first_name %> <%= @driver.last_name %></p></b>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12 col-md-12"><em> <p><%= @start_address %></p></em></div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12 col-md-12"><em><p><%= @traject.description %></p></em></div>
-                    </div>
-                  </div>
-                </div>
+            <!-- information arrival -->
+            <div class="card-ticket-traject">
+              <div class="card-ticket-traject-detail">
+                <h2>Vieilles Charrues</h2>
+                <p><%= @charrues %></p>
               </div>
-              <!-- <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div> -->
+              <div class="card-ticket-traject-hours">
+                <span><%= @end_time %></span>
+              </div>
             </div>
-          <div class="col-xs-12 text-center">
-           <% if @user_stop.status == "Pending" %>
-            <p class="status" style="color:#efb73e">Pending</p>
-          <% elsif @user_stop.status == "Refused" %>
-            <p class="status" style="color:red">Refused</p>
-          <% elsif @user_stop.status == "Accepted"%>
-           <p class="status" style="color:green">Accepted</p>
-          <% end %>
+            <hr>
+
+            <!-- information driver -->
+            <div class="card-ticket-driver-order">
+              <p> <%= image_tag('steering-wheel.png', class: "volant")%> <%= @driver.first_name %> <%= @driver.last_name %> </p>
+            </div>
+
+            <!-- status -->
+            <div class="card-ticket-status">
+              <span class="ticket-status">
+              <% if @user_stop.status == "Pending" %>
+                <p class="status" style="color:#efb73e">Pending</p>
+              <% elsif @user_stop.status == "Refused" %>
+                <p class="status" style="color:red">Refused</p>
+              <% elsif @user_stop.status == "Accepted"%>
+                 <p class="status" style="color:green">Accepted</p>
+              <% end %>
+              </span>
+            </div>
           </div>
+        </div>
+
+        <div class="" id="btn-nv-recherche" >
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i><%= link_to "  Nouvelle recherche", root_path, method: :get %>
         </div>
       </div>
 
+  <!-- old traject ticket -->
+            <!-- driver and passengers presentation -->
+              <!-- <p> <%= @driver.first_name %> <%= @driver.last_name %></p>
+                     <p><%= @start_address %></p></em>
+                      <p><%= @traject.description %></p>
+               <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div>
+            </div> -->
+          <!-- <div class="col-xs-12 text-center">
+           <%# if @user_stop.status == "Pending" %>
+            <p class="status" style="color:#efb73e">Pending</p>
+          <%# elsif @user_stop.status == "Refused" %>
+            <p class="status" style="color:red">Refused</p>
+          <%# elsif @user_stop.status == "Accepted"%>
+           <p class="status" style="color:green">Accepted</p>
+          <%# end %>
+          </div> -->
+
+    <!-- Google map traject -->
+      <div class="col-xs-12 col-md-4">
+        <div id="map-traject-user" style="width: 100%; height: 318px;"></div>
+      </div>
+    </div>
 
 
 
@@ -128,11 +124,6 @@
 
     </div>
 
-  <!-- Google map traject -->
-  <div class="col-xs-12 col-md-4">
-    <div id="map-traject-user" style="width: 100%; height: 400px;"></div>
-  </div>
-</div>
 
 
 
