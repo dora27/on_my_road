@@ -25,6 +25,7 @@ class StopsController < ApplicationController
     flash[:notice] = "Votre demande a bien été transmise."
 
     #StopMailer.validation(@stop).deliver_now
+
     redirect_to user_path(@user)
 
   end
@@ -57,6 +58,4 @@ private
     end
     return gmap_hash
   end
-
-
 end

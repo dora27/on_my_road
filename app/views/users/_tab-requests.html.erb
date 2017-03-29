@@ -1,10 +1,9 @@
-<div id="map" style="width:100%;height:60vh;"></div>
-
-<% content_for(:after_js) do %>
+<div id="map-requests" style="width:100%;height:50vh;"></div>
+<% content_for(:after_js3) do %>
   <script>
     $(document).ready(function() {
       var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
+      handler.buildMap({ internal: { id: 'map-requests' } }, function() {
         markers = <%= raw @hash.to_json %> // Fetch JSON with markers
         Gmaps.store = {} // Initialize storage
         Gmaps.store.markers = markers.map(function(m) {
@@ -23,7 +22,6 @@
             });
           }
 
-        Gmaps.selectMarker(4);
         //End
         handler.bounds.extendWith(Gmaps.store.markers);
         handler.fitMapToBounds();
@@ -52,9 +50,34 @@
         } else if (markers.length == 1) {
           handler.getMap().setZoom(10);
         } else {
-          handler.getMap().setZoom(7);
+          handler.getMap().setZoom(8);
         }
+
+        window.requestsMap = handler.getMap();
       });
     });
+
+    $(document).ready(function() {
+    $("#message-0").removeClass('hidden');
+    });
+
+  $(".card-btn").on("click", function(){
+    var id = $(this).data("id");
+    $("#message-" + id).fadeOut(300, function() {
+    $("#message-" + id).addClass('hidden');
+    id += 1;
+    $("#message-" + id).fadeIn(400).removeClass('hidden');
+     });
+  });
+
+  $(".card-flexbox").mouseover(function() {
+    var j = $(this).data("id") + 2;
+    Gmaps.selectMarker(j);
+  });
+
+  $(".accept-request").on("click", function(){
+    $('.car-people').append($('div.passenger-photo[data-id="'+ $(this).data("id") +'"]'));
+  });
+
   </script>
 <% end %>

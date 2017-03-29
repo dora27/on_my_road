@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   resources :trajects, only: [:show, :edit, :update]  do
     resources :stops, only: [:index, :create, :update]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
+  resources :reviews, only: [:show]
   resources :requests, only: [:new, :create, :show]
 end

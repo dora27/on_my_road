@@ -17,6 +17,13 @@ $(function(){
     $(".tab-content").addClass('hidden');
     // Show target tab-content (use class="hidden")
     $($(this).data('target')).removeClass('hidden');
+
+
+    var target = $(this).data('target');
+
+    if (target == '#trajects') {
+      google.maps.event.trigger(window.requestsMap, 'resize');
+    }
   });
 
 });

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag %>
     <title>Rock&Road. Trouvez un co-voiturage
 pour les Vieilles Charrues 2017</title>
     <%= csrf_meta_tags %>
@@ -14,7 +15,7 @@ pour les Vieilles Charrues 2017</title>
     <%= render 'shared/navbar_home' %> <!-- ajouter "if @navbar_home" pour deux navbar -->
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= render 'shared/footer' %>
+
 
 
     <%= javascript_include_tag 'application' %>
@@ -24,5 +25,10 @@ pour les Vieilles Charrues 2017</title>
     <%= cloudinary_js_config %>
 
     <%= yield(:after_js) %>
+    <%= yield(:after_js1) %>
+    <%= yield(:after_js2) %>
+    <%= yield(:after_js3) %>
+
+
   </body>
 </html>

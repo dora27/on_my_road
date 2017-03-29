@@ -46,16 +46,21 @@ class UsersController < ApplicationController
       @traject = @user.trajects[0]
       @remain_seats = @traject.seats
       @stops = @traject.stops
+      @stop = @stops[0]
 
       @pending_requests = 0
       @stops.each do |stop|
         @remain_seats -= 1 if stop.status == "Accepted"
-        @pending_requests += 1 if stop.status = "Pending"
+        @pending_requests += 1 if stop.status == "Pending"
       end
       @hash = google_map(@stops)
 
     end
     @start_address = @traject.starting_address
+
+    #Reviews
+    @review = Review.new
+    @reviews = @traject.reviews
   end
 
   def edit
@@ -87,12 +92,13 @@ class UsersController < ApplicationController
     address.split(',').map {|string| string.strip}
   end
   def google_map(stops)
-    stops = Stop.where.not(latitude: nil, longitude: nil)
+    # stops = Stop.where.not(latitude: nil, longitude: nil)
     gmap_hash = Gmaps4rails.build_markers(stops) do |stop, marker|
       marker.lat stop.latitude
       marker.lng stop.longitude
       marker.json({ :id => stop.id })
       marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+      # marker.picture ({ url: "http://www.iconsdb.com/icons/preview/orange/happy-xxl.png", width: 50, height: 50 })
 
     end
     return gmap_hash
