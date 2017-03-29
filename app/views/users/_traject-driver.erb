@@ -10,7 +10,7 @@
             <h4><%= @start_address %></h4>
           </div>
         </div>
-        <% if @stop.status == "Accepted" %>
+        <% if @stop && @stop.status == "Accepted" %>
           <div class="row stop-driver">
             <div class="col-md-2"><p><%= @stop.occurs_at %> </p></div>
             <div class="col-md-1"><i class="fa fa-map-marker fa-2x" style="color: purple"></i></div>
@@ -19,7 +19,7 @@
           </div>
         <% end %>
         <div class="row end-driver">
-          <div class="col-md-2"><p><%= @stop.end_time %> </p></div>
+          <% if  @stop %> <div class="col-md-2"><p><%= @stop.end_time %> </p></div> <% end %>
           <div class="col-md-1"><i class="fa fa-flag-checkered fa-2x" style="color: red"></i></div>
           <div class="col-md-9"><h4>Les Vieilles Charrues</h4></div>
         </div>
@@ -28,36 +28,6 @@
         <div id="map-traject-driver" style="width: 100%; height: 400px;"></div>
       </div>
     </div>
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-6 reviews-container">
-      <h3> Messages </h3>
-
-      <% @reviews.each do |review| %>
-        <% if review.user.id == current_user.id %>
-          <%= render 'review-current-user', review: review %>
-        <% else %>
-          <%= render 'review-else', review: review %>
-        <% end %>
-      <% end %>
-    </div>
-      <div class="col-md-6"></div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="col-md-3"> </div>
-      <div class="col-md-6">
-         <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
-            <%= form.input :content, as: :text %>
-            <%= form.button :submit %>
-          <% end %>
-        </div>
-      <div class="col-md-3"> </div>
-    </div>
-    <div class="col-md-6"></div>
   </div>
 </div>
 
