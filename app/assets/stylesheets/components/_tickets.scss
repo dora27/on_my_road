@@ -3,6 +3,13 @@
   font-size: 25px;
   text-transform: uppercase;
 }
+
+.trajects-show h1 {
+    color: white;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
 .card-ticket {
   display: flex;
   border-radius: 10px;
@@ -31,11 +38,26 @@
   font-size: 18px;
   background: black;
   color: white;
-  padding: 10px;
+  padding: 10px 28px;
+  border-top-right-radius: 10px;
   .ticket-price {
    font-size: 22px;
   }
 }
+
+.card-ticket-status {
+  position: absolute;
+  top: 252px;
+  right: 17px;
+  font-size: 18px;
+  background: white;
+  color: white;
+  padding: 8px 16px 0px 16px;
+  .ticket-status {
+   font-size: 25px;
+  }
+}
+
 
 .card-ticket-traject {
   display: flex;
@@ -61,6 +83,10 @@
   margin-bottom: -25px;
 }
 
+.card-ticket-driver-order {
+    margin-right: 11px;
+    margin-bottom: -5px;
+}
 
 .photo-ticket{
   // display: flex;
