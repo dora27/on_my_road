@@ -90,27 +90,42 @@
       </div>
 
 
+
+
+
       <!-- Reviews -->
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-9 reviews-container">
-        <h3> Messages </h3>
 
-        <% @reviews.each do |review| %>
-          <%= render 'review', review: review %>
-        <% end %>
-      </div>
-    </div>
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-9 reviews-container">
+            <h3> Messages </h3>
 
-     <div class="row">
-       <div class="col-md-3"></div>
-       <div class="col-md-9 form-review">
-         <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
-            <%= form.input :content, as: :text %>
-            <%= form.button :submit %>
-          <% end %>
-       </div>
-     </div>
+            <% @reviews.each do |review| %>
+              <% if review.user.id == current_user.id %>
+                <%= render 'review-current-user', review: review %>
+              <% else %>
+                <%= render 'review-else', review: review %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+         <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-9 form-review">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
+                  <%= form.input :content, as: :text %>
+                  <%= form.button :submit %>
+                <% end %>
+            </div>
+            <div class="col-md-3"></div>
+          </div>
+         </div>
+
+
+
     </div>
 
   <!-- Google map traject -->
