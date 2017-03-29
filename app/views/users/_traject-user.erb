@@ -125,18 +125,13 @@
 
   <!-- Google map traject -->
   <div class="col-xs-12 col-md-4">
-    <div id="map" style="width: 100%; height: 400px;"></div>
+    <div id="map-traject-user" style="width: 100%; height: 400px;"></div>
   </div>
 </div>
 
 
 
-
-
-
-
-
-<% content_for(:after_js) do %>
+<% content_for(:after_js1) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('.ticket-address').textfill({
@@ -146,7 +141,7 @@
         maxFontPixels: 37
       });
       var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map' } }, function() {
+      handler.buildMap({ internal: { id: 'map-traject-user' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();

@@ -98,6 +98,7 @@ class UsersController < ApplicationController
       marker.lng stop.longitude
       marker.json({ :id => stop.id })
       marker.infowindow "#{stop.user.first_name} #{stop.user.last_name}"
+      # marker.picture ({ url: "http://www.iconsdb.com/icons/preview/orange/happy-xxl.png", width: 50, height: 50 })
 
     end
     return gmap_hash
