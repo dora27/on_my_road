@@ -15,45 +15,46 @@
   <% end %>
 </div>
 
-  <!-- Driver -->
-  <% if @user.trajects.empty? == false  %>
-  <!-- Tab Trajects - the driver view -->
-    <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-      <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1>
-      <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2>
-      <h2 class="text-center"> Ma voiture :</h2>
-      <div class="car-people">
-        <% @stops.each do |stop| %>
-          <% if stop.status == "Accepted" %>
-            <% if stop.user.photo %>
-              <div >
-                <%= cl_image_tag stop.user.photo.path, class: "avatar-large" %>
-              </div>
-            <% end %>
+
+<!-- Driver -->
+<% if @user.trajects.empty? == false  %>
+<!-- Tab Trajects - the driver view -->
+  <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
+   <!--  <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1> -->
+    <!-- <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2> -->
+    <h1 class="text-center" style="color:white;"> Ma voiture</h1>
+    <div class="car-people">
+      <% @stops.each do |stop| %>
+        <% if stop.status == "Accepted" %>
+          <% if stop.user.photo %>
+            <div >
+              <%= cl_image_tag stop.user.photo.path, class: "avatar-large" %>
+            </div>
           <% end %>
+        <% end %>
         <% end %>
       </div>
 
-      <div class="container-fluid navbar-marged">
-        <div class="row-fluid">
-          <div class="col-xs-6">
-            <% @stops.each_with_index do |stop, i| %>
-              <% if stop.status == "Pending" %>
-                <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
-                  <%= render 'stop-card', stop: stop, i: i %>
-                </div>
-              <% end %>
-            <% end %>
-            <% if @pending_requests.zero? %>
-              <h4>Vous n'avez pas de nouvelles demandes</h4>
-            <% end %>
+<div class="container-fluid requests-show">
+  <div class="row-fluid">
+  <h1>Vos requêtes (<span id="request-count"><%= @pending_requests %></span>)</h1>
+    <div class="col-xs-7">
+      <% @stops.each_with_index do |stop, i| %>
+        <% if stop.status == "Pending" %>
+          <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
+            <%= render 'stop-card', stop: stop, i: i %>
           </div>
-          <div class="col-xs-6">
-            <%= render 'tab-requests' %>
-          </div>
-        </div>
+        <% end %>
+      <% end %>
+      <div class="card-flexbox hidden" style="background-color: transparent;" id="message-<%= @pending_requests %>" data-id="<%= @pending_requests %>">
+        <h4>Vous avez traité toutes vos requêtes</h4>
       </div>
+   </div>
+
+    <div class="col-xs-5">
+      <%= render 'tab-requests' %>
     </div>
+
   <% end %>
 
 
