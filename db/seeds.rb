@@ -9,6 +9,8 @@ Stop.destroy_all
 Review.destroy_all
 Traject.destroy_all
 User.destroy_all
+Request.destroy_all
+Review.destroy_all
 
 #Creation des profils users (drivers)
 simon = User.new(email: "simon@gmail.com", password: "lewagon1", first_name: "Simon", last_name: "DeSwag", phone: "0123456789")
