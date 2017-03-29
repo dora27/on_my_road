@@ -9,7 +9,9 @@
   </div>
   <div class="col-md-3 review-user">
     <div class="review-user">
+      <% if review.user.photo %>
       <%= cl_image_tag review.user.photo.path, class: "avatar" %>
+      <% end %>
     </div>
   </div>
 </div>
