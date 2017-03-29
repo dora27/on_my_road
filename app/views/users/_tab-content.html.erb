@@ -39,11 +39,13 @@
   <div class="row-fluid">
   <h1>Vos requêtes (<span id="request-count"><%= @pending_requests %></span>)</h1>
     <div class="col-xs-7">
+    <% j = 0 %>
       <% @stops.each_with_index do |stop, i| %>
         <% if stop.status == "Pending" %>
-          <div class="card-flexbox hidden" id="message-<%= i %>" data-id="<%= i %>">
-            <%= render 'stop-card', stop: stop, i: i %>
+          <div class="card-flexbox hidden" id="message-<%= j %>" data-id="<%= j %>">
+            <%= render 'stop-card', stop: stop, j: j %>
           </div>
+          <% j += 1 %>
         <% end %>
       <% end %>
       <div class="card-flexbox hidden" style="background-color: transparent;" id="message-<%= @pending_requests %>" data-id="<%= @pending_requests %>">

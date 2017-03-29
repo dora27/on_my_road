@@ -1,7 +1,7 @@
 <% passenger = stop.user %>
 <div class="row">
   <div class="col-xs-4">
-    <div class="passenger-photo" data-id='<%= i %>'>
+    <div class="passenger-photo" data-id='<%= j %>'>
       <% if passenger.photo %>
         <%= cl_image_tag passenger.photo.path, class: "avatar-request" %>
       <% end %>
@@ -24,8 +24,8 @@
 
 <div class="flex-btn">
  <%= simple_form_for ([@traject, stop]) do |f| %>
-    <button class="card-btn accept-request btn btn-primary btn-purple" type="submit" name ="status" value="Accepted" data-id="<%= i %>">Accept</button>
-    <button class="card-btn btn btn-primary btn-red" type="submit" name="status" value="Refused" data-id="<%= i %>">Refuse</button>
+    <button class="card-btn accept-request btn btn-primary btn-purple" type="submit" name ="status" value="Accepted" data-id="<%= j %>">Accept</button>
+    <button class="card-btn btn btn-primary btn-red" type="submit" name="status" value="Refused" data-id="<%= j %>">Refuse</button>
   <% end %>
 </div>
 </div>
