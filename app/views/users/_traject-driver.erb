@@ -36,7 +36,11 @@
       <h3> Messages </h3>
 
       <% @reviews.each do |review| %>
-        <%= render 'review', review: review %>
+        <% if review.user.id == current_user.id %>
+          <%= render 'review-current-user', review: review %>
+        <% else %>
+          <%= render 'review-else', review: review %>
+        <% end %>
       <% end %>
     </div>
       <div class="col-md-6"></div>
