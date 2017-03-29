@@ -1,14 +1,17 @@
 <!-- loader before result -->
+
+<!-- IMPORTANT: ACTIVATE BEFORE DEMO-->
+
 <div id="page">
   <div id="phrase_box">
     <svg width="100%" height="100%">
       <defs>
-        <!--<style type="text/css">
+<!--         <style type="text/css">
           @font-face {
             font-family: "Proxima";
             src: url('');
           }
-        </style>-->
+        </style> -->
         <mask id="mask" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse">
           <linearGradient id="linearGradient" gradientUnits="objectBoundingBox" x2="0" y2="1">
             <stop stop-color="white" stop-opacity="0" offset="0%"/>
@@ -30,88 +33,65 @@
   </div>
 </div>
 
-<h1 class = "text-center navbar-marged">Trajet proposé</h1>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(89, 60, 250, 0.94),rgba(60,250,238,0.94)40%,rgba(0,36,61,0.8)40%),url(<%= image_path('home_welcome_picture.jpg')%>)">
+  <div class="container">
+    <h1 class = "navbar-marged">Trajet proposé</h1>
+    <div class="marged-top">
+      <div class="col-xs-12 col-md-8">
 
-<div class="container">
-  <div class="row marged-top">
-    <div class="col-xs-12 col-md-8">
+<!-- new ticket flex box-->
+        <div class="card-ticket">
+          <div class="card-ticket-image" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');"></div>
 
-  <!-- traject ticket -->
-      <div class="row card-ticket">
-          <!-- image travel -->
-        <div class="col-xs-12 col-md-3 nopadding photo-ticket" style="background-image: linear-gradient(135deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%), url('<%= cl_image_path "ioosfcxh8uwjz49aikrg" %>');">
-       </div>
-
-          <!-- information travel -->
-          <div class="col-xs-12 col-md-9">
-            <div class="row text-center">
-            <!-- depart information -->
-              <div class="col-xs-12 col-md-10 border-right">
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-city text-center"><%= @town %> </p>
-                  </div>
-                  <div class="col-xs-12 col-md-2">
-                    <i class="fa fa-road fa-3x" id="logo-road" aria-hidden="true"></i>
-                  </div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-city text-center">Vieilles Charrues</p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-address"><%= @address_passenger %></p>
-                  </div>
-                  <div class="col-xs-12 col-md-2 line-in-middle">
-
-                  </div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-address"><%= @charrues %></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-hours"><%= @stop_time_start %></p>
-                  </div>
-                  <div class="col-xs-12 col-md-2"></div>
-                  <div class="col-xs-12 col-md-5">
-                    <p class="ticket-hours"><%= @end_time %></p>
-                  </div>
-                </div>
+          <!-- description -->
+          <div class="card-ticket-description">
+            <!-- pricing -->
+            <div class="card-ticket-price">
+              <span class="ticket-price">15€</span>
+            </div>
+            <!-- information depart -->
+            <div class="card-ticket-traject">
+              <div class="card-ticket-traject-detail">
+                <h2><%= @town %></h2>
+                <p><%= @address_passenger %></p>
               </div>
-
-              <!-- price information -->
-              <div class="col-xs-12 col-md-2 text-center">
-                <div class="card">
-                  <span class="ticket-price">15€</span>
-                </div>
+              <div class="card-ticket-traject-hours">
+                <span><%= @stop_time_start %></span>
               </div>
             </div>
+            <hr>
 
-            <!-- driver and passengers presentation -->
-            <div class="row ticket-driver">
-              <!-- <div class="col-xs-12 ticket-driverinfo"> <p>Information</p> </div> -->
-              <div class="col-xs-12" style="margin-top: 14px"> <p>DRIVER:  <%= @driver_key %> </p> </div>
-              <div class="col-xs-12"> <p>PASSAGERS:  Aucun</p> </div>
+            <!-- information arrival -->
+            <div class="card-ticket-traject">
+              <div class="card-ticket-traject-detail">
+                <h2>Vieilles Charrues</h2>
+                <p><%= @charrues %></p>
+              </div>
+              <div class="card-ticket-traject-hours">
+                <span><%= @end_time %></span>
+              </div>
             </div>
+            <hr>
+
+            <!-- information driver -->
+            <div class="card-ticket-driver">
+              <p> <%= image_tag('steering-wheel.png', class: "volant")%> <%= @driver_key %> </p>
+            </div>
+
+            <!-- call to action -->
+            <div class="card-ticket-bouton" id="btn-bookconfirm">
+              <%= link_to "Réserver", traject_stops_path(traject_id: @traject_id, stop_address: @address_search, stop_time: @stop_time_start, end_time: @end_time), method: :post, class: "btn btn-primary btn-purple" %>
+            </div>
+
           </div>
-      </div>
-
-            <!-- button book -->
-            <div class="row">
-              <div class="col-xs-12 col-md-9" id="btn-nv-recherche" >
-                <%= link_to "Nouvelle Recherche", root_path, method: :get, class: "btn btn-primary btn-purple-second" %>
-              </div>
-
-              <div class="col-xs-12 col-md-3" id = "btn-bookconfirm">
-
-                <%= link_to "Réserver cet aller", traject_stops_path(traject_id: @traject_id, stop_address: @address_search, stop_time: @stop_time_start, end_time: @end_time), method: :post, class: "btn btn-primary btn-purple" %>
-
-              </div>
-            </div>
         </div>
 
-  <!-- Google map traject -->
+        <div class="" id="btn-nv-recherche" >
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i><%= link_to "  Nouvelle recherche", root_path, method: :get %>
+        </div>
+      </div>
+
+    <!-- Google map traject -->
       <div class="col-xs-12 col-md-4">
         <div id="map" style="width: 100%; height: 400px;"></div>
       </div>
@@ -132,6 +112,7 @@
       $('.ticket-city').textfill({
         maxFontPixels: 37
       });
+
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map' } }, function() {
         markers = handler.addMarkers(<%= raw @hash.to_json %>);
@@ -147,5 +128,7 @@
 
   <% end %>
 <% end %>
+
+
 
 
