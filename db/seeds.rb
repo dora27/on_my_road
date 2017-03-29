@@ -15,27 +15,23 @@ Review.destroy_all
 #Creation des profils users (drivers)
 simon = User.new(email: "simon@gmail.com", password: "lewagon1", first_name: "Simon", last_name: "DeSwag", phone: "0123456789")
 simon.save
-url = "http://lorempixel.com/400/400/people/1/"
+url = "https://images.unsplash.com/photo-1458696352784-ffe1f47c2edc?dpr=1.600000023841858&auto=format&fit=crop&w=1500&h=999&q=80&cs=tinysrgb&crop="
 simon.photo_url = url
 
 stegre = User.new(email: "stegre@gmail.com", password: "lewagon2", first_name: "VirtualFlow", last_name: "Stegre", phone: "0623752788")
 stegre.save
-url = "http://lorempixel.com/400/400/people/2/"
 stegre.photo_url = url
 
 quentin = User.new(email: "quentin@gmail.com", password: "lewagon3", first_name: "Quentin", last_name: "BoV", phone: "0634569345")
 quentin.save
-url = "http://lorempixel.com/400/400/people/3/"
 quentin.photo_url = url
 
 dora = User.new(email: "dora@gmail.com", password: "lewagon4", first_name: "Dora", phone: "0695432864")
 dora.save
-url = "http://lorempixel.com/400/400/people/4/"
 dora.photo_url = url
 
 alix = User.new(email: "alix@gmail.com", password: "lewagon5",  first_name: "Alix", phone: "0623000788")
 alix.save
-url = "http://lorempixel.com/400/400/people/5/"
 alix.photo_url = url
 
 #Creation des trajets associés
