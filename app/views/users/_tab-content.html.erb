@@ -71,7 +71,6 @@
         <div class="chat-box">
           <h3 class="text-center" style ="color:white">  </h3>
           <div id="messages">
-
             <% @reviews.each do |review| %>
               <% if review.user.id == current_user.id %>
                 <%= render 'review-current-user', review: review %>
