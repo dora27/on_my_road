@@ -1,0 +1,37 @@
+.chat-box {
+  background: rgba(237, 237, 237, 0.86);
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.32);
+  position: relative;
+  padding-bottom: 30px;
+  padding-top: 5px;
+}
+#messages {
+  height: calc(100vh - 250px);
+  overflow-y: scroll;
+}
+
+#review_content {
+  background: #f3f3f3;
+  height: 45px;
+  border: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.review-content-else .message-chat {
+  background: #9C1DE7;
+}
+.review-content-else:after {
+  border-bottom: 17px solid #9C1DE7 !important;
+}
+
+.review-content .message-chat {
+  background: #5570f5;
+}
+.review-content:after {
+  border-bottom: 17px solid #5570f5 !important;
+}

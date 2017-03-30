@@ -18,25 +18,46 @@
 }
 
 .card-flexbox {
-  position: relative;
-  // display: flex;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   border-width: thin;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-bottom: 15px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
 }
 
 .card-flexbox:hover{
   box-shadow: 0 0 20px $purple;
 }
 
-.status-position {
-  position: absolute;
-  font-size: 20px;
-  top: 10px;
-  right: 10px;
+.card-element {
+  width: 300px;
 }
 
+.status-font-size {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.status-refused {
+  color: red
+}
+
+.status-pending {
+  color: #fbbc05;
+}
+
+.status-accepted {
+  color: green;
+}
 
 .flex-btn {
   display: -webkit-flex;
@@ -45,15 +66,24 @@
   flex-direction: row;
   -webkit-justify-content: flex-end;
   justify-content: flex-end;
+  margin-bottom: 10px;
 }
 
 .fa-commenting-o {
   font-size: 20px;
   margin-right: 10px;
+  color: lightblue;
+}
+
+.fa-flag {
+  font-size: 20px;
+  margin-right: 10px;
+  color: $purple;
 }
 
 .passenger-photo {
-  align-items: center;
+  position: absolute;
+  top: -50px;
 }
 
 .card-element h3 {
@@ -61,9 +91,7 @@
 }
 
 .address-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 25px;
+
 }
 
 .no-margin-h {
@@ -76,3 +104,18 @@
   margin-right: 10px;
 }
 
+.bordered {
+  border: 2px solid white;
+  border-style: double;
+}
+
+.name-passenger {
+  margin-top: 50px;
+}
+
+.hr-design {
+  width: 50%;
+  color: black;
+  background-color: black;
+  margin: 12px;
+}

@@ -1,17 +1,17 @@
 <div class="row chat-line">
-  <div class="col-md-3"></div>
+  <div class="col-md-6"></div>
   <div class="col-md-6">
-<!--     <p><em><%= review.created_at.strftime("%I:%M%p") %></em></p>
- -->
-    <div class="review-content">
-      <p class="message-chat"><%= review.content %></p>
+    <div class="col-md-9">
+      <div class="review-content">
+        <p class="message-chat"><%= review.content %></p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-3 review-user">
-    <div class="review-user">
-      <% if review.user.photo %>
-      <%= cl_image_tag review.user.photo.path, class: "avatar" %>
-      <% end %>
+    <div class="col-md-3 review-user">
+      <div class="review-user">
+        <% if review.user.photo %>
+        <%= cl_image_tag review.user.photo.path, style: "width: 60px; border-radius: 50%"%>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

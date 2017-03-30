@@ -4,6 +4,7 @@
   <!-- Tab Home - the passenger view -->
   <!-- Passager -->
   <% if @user.trajects.empty? == true  %>
+
     <div class="tab-content <%= active_tab == 'home' ? 'active' : 'hidden'  %>" id="home">
       <%= render "traject-user" %>
     </div>
@@ -20,10 +21,8 @@
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-   <!--  <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1> -->
-    <!-- <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2> -->
     <h1 class="text-center" style="color:white;"> Ma voiture</h1>
-    <div class="car-people">
+    <!-- <div class="car-people">
       <% @stops.each do |stop| %>
         <% if stop.status == "Accepted" %>
           <% if stop.user.photo %>
@@ -32,8 +31,8 @@
             </div>
           <% end %>
         <% end %>
-        <% end %>
-      </div>
+      <% end %>
+    </div> -->
 
 <div class="container-fluid requests-show">
   <div class="row-fluid">
@@ -51,14 +50,43 @@
       <div class="card-flexbox hidden" style="background-color: transparent;" id="message-<%= @pending_requests %>" data-id="<%= @pending_requests %>">
         <h4>Vous avez traité toutes vos requêtes</h4>
       </div>
-   </div>
+    </div>
 
     <div class="col-xs-5">
       <%= render 'tab-requests' %>
     </div>
 
-  <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
 
+
+<div class="tab-content <%= active_tab == 'chat' ? 'active' : 'hidden'  %>" id="chat">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="chat-box">
+          <h3 class="text-center" style ="color:white">  </h3>
+          <div id="messages">
+            <% @reviews.each do |review| %>
+              <% if review.user.id == current_user.id %>
+                <%= render 'review-current-user', review: review %>
+              <% else %>
+                <%= render 'review-else', review: review %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
+            <%= form.input :content, as: :string, label: false, placeholder: "Discuter avec #{@traject.user.first_name} (Entrée pour envoyer)" %>
+            <% form.button :submit, value: "Envoyer" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Tab Profile -->
 <div class="container tab-content <%= active_tab == 'profile' ? 'active' : 'hidden'  %>" id="profile" >

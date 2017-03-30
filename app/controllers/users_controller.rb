@@ -22,14 +22,12 @@ class UsersController < ApplicationController
       @user_stop = @user.stop
       @traject = Traject.find(@user_stop.traject_id)
       authorize @traject
-
       @address_stop = @user_stop.stop_address
       @address_stop_geo = Geocoder.search(@address_stop)[0]
       @address_stop_split = split_address(@address_stop)
       @stop_time = @user_stop.occurs_at
       @town = @address_stop_split[1]
       @address_passenger = @address_stop_split[0]
-
 
       @end_time = @user_stop.end_time
       @driver = User.find(@traject.user_id)
@@ -57,10 +55,10 @@ class UsersController < ApplicationController
 
     end
     @start_address = @traject.starting_address
-
+    @start_address_geo = Geocoder.search(@start_address)[0]
     #Reviews
     @review = Review.new
-    @reviews = @traject.reviews
+    @reviews = @traject.reviews.order(id: 'ASC')
   end
 
   def edit

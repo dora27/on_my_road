@@ -1,26 +1,25 @@
 <% passenger = stop.user %>
-<div class="row">
-  <div class="col-xs-4">
-    <div class="passenger-photo" data-id='<%= j %>'>
-      <% if passenger.photo %>
-        <%= cl_image_tag passenger.photo.path, class: "avatar-request" %>
-      <% end %>
-    </div>
-  </div>
+<div class="passenger-photo">
+<% if passenger.photo %>
+  <%= cl_image_tag passenger.photo.path, class: "avatar-large bordered" %>
+<% end %>
+</div>
 
-  <div class="col-xs-8">
-  <div class="card-element">
+  <div class="card-element name-passenger">
       <h4 class="text-center"><%= passenger.first_name + " " + passenger.last_name %></h4>
   </div>
+  <div class="card-element status-<%= stop.status.downcase %> status-font-size text-center">
+    <p class="no-margin-h"><%= stop.status  %></p>
+  </div>
+  <hr class="hr-design">
+  <div class="card-element address-info">
+    <h4 class= "no-margin-h text-center"><i class="fa fa-flag"></i><%= stop.stop_address %></h4>
+    <!-- <span class="occurs"><%= stop.occurs_at %></span> -->
+  </div>
+  <hr class="hr-design">
     <div class="card-element">
       <p class= "message-style text-center"><i class="fa fa-commenting-o"></i>"<%= stop.message %>"</p>
     </div>
-    <hr>
-    <div class="card-element address-info">
-      <h4 class= "no-margin-h"><%= stop.stop_address %></h4>
-      <span class="occurs"><%= stop.occurs_at %></span>
-    </div>
-
 
 <div class="flex-btn">
  <%= simple_form_for ([@traject, stop]) do |f| %>
@@ -28,17 +27,7 @@
     <button class="card-btn btn btn-primary btn-red" type="submit" name="status" value="Refused" data-id="<%= j %>">Refuse</button>
   <% end %>
 </div>
-</div>
-</div>
 
 
-<div class="status-position">
-  <% if stop.status == "Pending" %>
-    <p style="color:#efb73e">Pending</p>
-  <% elsif stop.status == "Refused" %>
-    <p style="color:red">Refused</p>
-  <% else %>
-   <p style="color:green">Accepted</p>
-  <% end %>
-</div>
+
 

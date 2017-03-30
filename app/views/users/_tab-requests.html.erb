@@ -51,40 +51,6 @@
       });
     });
 
-// $(document).ready(function() {
-//   var directionsDisplay;
-//   var directionsService = new google.maps.DirectionsService();
-//   var map;
-//   var handler = Gmaps.build('Google');
-//   handler.buildMap({ internal: { id: 'map-requests' } }
-
-//   function initialize() {
-//     directionsDisplay = new google.maps.DirectionsRenderer();
-//     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-//     var mapOptions = {
-//       zoom:7,
-//       center: chicago
-//     }
-//     map = new google.maps.Map(document.getElementById("map-requests"), mapOptions);
-//     directionsDisplay.setMap(map);
-//   }
-
-//   function calcRoute() {
-//     var start = "Chicago";
-//     var end = "New York";
-//     var request = {
-//       origin:start,
-//       destination:end,
-//       travelMode: google.maps.TravelMode.DRIVING
-//     };
-//     directionsService.route(request, function(result, status) {
-//       if (status == google.maps.DirectionsStatus.OK) {
-//         directionsDisplay.setDirections(result);
-//       }
-//     });
-//   }
-// });
-
 $(document).ready(function() {
   $("#message-0").removeClass('hidden');
 });
@@ -107,6 +73,7 @@ $(".accept-request").on("click", function(){
   newPassenger.children().removeClass();
   newPassenger.children().addClass("avatar-large");
 });
+
 
   </script>
 <% end %>
