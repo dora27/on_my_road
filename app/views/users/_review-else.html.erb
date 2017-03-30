@@ -1,0 +1,15 @@
+
+<div class="row chat-line">
+  <div class="col-md-3">
+    <div class="review-user-else">
+      <%= cl_image_tag review.user.photo.path, class: "avatar" %>
+    </div>
+  </div>  <div class="col-md-6">
+    <div class="review-content-else">
+      <p class="message-chat"><%= review.content %></p>
+    </div>
+  </div>
+  <div class="col-md-3">
+  </div>
+</div>
+
