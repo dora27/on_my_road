@@ -2,7 +2,7 @@
 
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(89, 60, 250, 0.94),rgba(60,250,238,0.94)40%,rgba(0,36,61,0.8)40%),url(<%= image_path('home_welcome_picture.jpg')%>)">
   <div id="dashboard">
-    <div id="dashboard-menu">
+    <div class="container" id="dashboard-menu">
       <%= render "tabs" %>
     </div>
     <div id="dashboard-content">
@@ -13,18 +13,20 @@
 
 
 <!-- JS -->
-  <%= content_for :after_js do %>
-    <script>
-    // inspect params
-    $(document).ready(function() {
-    // if paramt=ab
-      <% if params[:tab] == "profile" %>
-    // simulate click on corresponding tab
-        $("#home").removeClass('active');
-        $("#home").addClass('hidden');
-        $("#profile").removeClass('hidden');
-        $("#profile").addClass('active');
-        <% end %>
-     });
-    </script>
-  <% end %>
+
+<%= content_for :after_js do %>
+  <script>
+  // inspect params
+  $(document).ready(function() {
+  // if paramt=ab
+    <% if params[:tab] == "profile" %>
+  // simulate click on corresponding tab
+      $("#home").removeClass('active');
+      $("#home").addClass('hidden');
+      $("#profile").removeClass('hidden');
+      $("#profile").addClass('active');
+      <% end %>
+   });
+  </script>
+<% end %>
+

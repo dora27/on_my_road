@@ -65,11 +65,13 @@
 
 
 <div class="tab-content <%= active_tab == 'chat' ? 'active' : 'hidden'  %>" id="chat">
-    <div class="container chat-box">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="reviews-container">
-            <h3 class="text-center" style ="color:white"> Les Vieilles Charrues </h3>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="chat-box">
+          <h3 class="text-center" style ="color:white"> Les Vieilles Charrues </h3>
+          <div id="messages">
+
             <% @reviews.each do |review| %>
               <% if review.user.id == current_user.id %>
                 <%= render 'review-current-user', review: review %>
@@ -78,24 +80,15 @@
               <% end %>
             <% end %>
           </div>
-        </div>
-        <div class="col-md-4 col-md-offset-4">
+
           <%= simple_form_for([ @traject, @review ], remote: true) do |form| %>
-            <%= form.input :content, as: :text %>
-            <%= form.button :submit, value: "Envoyer" %>
+            <%= form.input :content, as: :string, label: false, placeholder: "Discuter avec #{@traject.user.first_name} (Entrée pour envoyer)" %>
+            <% form.button :submit, value: "Envoyer" %>
           <% end %>
         </div>
       </div>
     </div>
-
-    <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-9 form-review">
-        <div class="col-md-6">
-        </div>
-        <div class="col-md-3"></div>
-      </div>
-      </div>
+  </div>
 </div>
 
 <!-- Tab Profile -->
