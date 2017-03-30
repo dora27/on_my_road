@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     @start_address_geo = Geocoder.search(@start_address)[0]
     #Reviews
     @review = Review.new
-    @reviews = @traject.reviews
+    @reviews = @traject.reviews.order(id: 'ASC')
   end
 
   def edit
