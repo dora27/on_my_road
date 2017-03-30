@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     end
     @start_address = @traject.starting_address
-
+    @start_address_geo = Geocoder.search(@start_address)[0]
     #Reviews
     @review = Review.new
     @reviews = @traject.reviews

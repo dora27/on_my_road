@@ -21,7 +21,9 @@
                 <p><%= @address_passenger %></p>
               </div>
               <div class="card-ticket-traject-hours">
-                <span><%= @stop_time %></span>
+                <span>
+                  <%= @stop_time %>
+                </span>
               </div>
             </div>
             <hr>
@@ -33,7 +35,11 @@
                 <p><%= @charrues %></p>
               </div>
               <div class="card-ticket-traject-hours">
-                <span><%= @end_time %></span>
+                <span>
+                  <% end_match = @end_time.match(/(\d\d):(\d\d)/) %>
+                  <%= end_match[1].to_i % 24 %>:<%= end_match[2] %>
+                </span>
+
               </div>
             </div>
             <hr>
@@ -109,29 +115,44 @@
      </div>
     </div>
 
-
-
-
-<% content_for(:after_js1) do %>
+<% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).ready(function() {
+
       $('.ticket-address').textfill({
         maxFontPixels: 14
        });
       $('.ticket-city').textfill({
         maxFontPixels: 37
       });
-      var handler = Gmaps.build('Google');
-      handler.buildMap({ internal: { id: 'map-traject-user' } }, function() {
-        markers = handler.addMarkers(<%= raw @hash.to_json %>);
-        handler.bounds.extendWith(markers);
-        handler.fitMapToBounds();
-        if (markers.length == 0) {
-          handler.getMap().setZoom(2);
-        } else if (markers.length == 1) {
-          handler.getMap().setZoom(14);
-        }
+
+      var myHome = { lat: <%= @start_address_geo.latitude %> , lng: <%= @start_address_geo.longitude %> }
+      var charrues = { lat: <%= @charrues_geo.latitude %> , lng: <%= @charrues_geo.longitude %> }
+      var directionsService = new google.maps.DirectionsService;
+      var directionsDisplay = new google.maps.DirectionsRenderer;
+      var map = new google.maps.Map(document.getElementById('map-traject-user'), {
+        zoom: 7,
+        center: charrues
       });
+
+      directionsDisplay.setMap(map);
+      calculateAndDisplayRoute(directionsService, directionsDisplay);
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: myHome,
+          destination: charrues,
+          travelMode: 'DRIVING',
+          waypoints: [{location: "<%= @address_stop  %>", stopover: true}],
+          optimizeWaypoints: true,
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
     });
 
   <% end %>
