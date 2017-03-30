@@ -2,25 +2,19 @@
 <% content_for(:after_js3) do %>
   <script>
     $(document).ready(function() {
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var map;
       var handler = Gmaps.build('Google');
       handler.buildMap({ internal: { id: 'map-requests' } }, function() {
+
         markers = <%= raw @hash.to_json %> // Fetch JSON with markers
         Gmaps.store = {} // Initialize storage
         Gmaps.store.markers = markers.map(function(m) {
           marker = handler.addMarker(m);
           marker.serviceObject.set('id', m.id); // You can add other attributes using set
           return marker;
-        });
-        //Gmap selector
-        Gmaps.selectMarker = function(id) {
-            $.each(Gmaps.store.markers, function() {
-              if (this.serviceObject.id == id) {
-                this.panTo();
-                this.serviceObject.setAnimation(google.maps.Animation.BOUNCE);
-              }
-              else this.serviceObject.setAnimation(null);
-            });
-          }
+        })
 
         //End
         handler.bounds.extendWith(Gmaps.store.markers);
@@ -57,32 +51,29 @@
       });
     });
 
-    $(document).ready(function() {
-    $("#message-0").removeClass('hidden');
-    });
+$(document).ready(function() {
+  $("#message-0").removeClass('hidden');
+});
 
-  $(".card-btn").on("click", function(){
-    var id = $(this).data("id");
-    var requestCounter = $('#request-count');
-    $("#message-" + id).fadeOut(300, function() {
-    $("#message-" + id).addClass('hidden');
-    id += 1;
-    $("#message-" + id).fadeIn(400).removeClass('hidden');
-     });
-    requestCounter.text(requestCounter.text() - 1);
+$(".card-btn").on("click", function(){
+  var id = $(this).data("id");
+  var requestCounter = $('#request-count');
+  $("#message-" + id).fadeOut(300, function() {
+  $("#message-" + id).addClass('hidden');
+  id += 1;
+  $("#message-" + id).fadeIn(400).removeClass('hidden');
   });
+  requestCounter.text(requestCounter.text() - 1);
+});
 
-  // $(".card-flexbox").mouseover(function() {
-  //   var j = $(this).data("id") + 2;
-  //   Gmaps.selectMarker(j);
-  // });
 
-  $(".accept-request").on("click", function(){
-    var newPassenger = $('div.passenger-photo[data-id="'+ $(this).data("id") +'"]')
-    $('.car-people').append(newPassenger);
-    newPassenger.children().removeClass();
-    newPassenger.children().addClass("avatar-large");
-  });
+$(".accept-request").on("click", function(){
+  var newPassenger = $('div.passenger-photo[data-id="'+ $(this).data("id") +'"]')
+  $('.car-people').append(newPassenger);
+  newPassenger.children().removeClass();
+  newPassenger.children().addClass("avatar-large");
+});
+
 
   </script>
 <% end %>

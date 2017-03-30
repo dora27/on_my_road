@@ -21,10 +21,8 @@
 <% if @user.trajects.empty? == false  %>
 <!-- Tab Trajects - the driver view -->
   <div class="container tab-content <%= active_tab == 'trajects' ? 'active' : 'hidden'  %>" id="trajects" >
-   <!--  <h1 class="text-center">Bonjour <%= @user.first_name %>, acceptez-vous ces demandes ?</h1> -->
-    <!-- <h2 class="text-center">Places restantes: <%= @remain_seats %>/<%= @traject.seats %> </h2> -->
     <h1 class="text-center" style="color:white;"> Ma voiture</h1>
-    <div class="car-people">
+    <!-- <div class="car-people">
       <% @stops.each do |stop| %>
         <% if stop.status == "Accepted" %>
           <% if stop.user.photo %>
@@ -34,7 +32,8 @@
           <% end %>
         <% end %>
       <% end %>
-    </div>
+    </div> -->
+
 
 <div class="container-fluid requests-show">
   <div class="row-fluid">
