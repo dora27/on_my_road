@@ -56,6 +56,8 @@ class RequestsController < ApplicationController
       marker.lng traject.longitude
     end
 
+    @stop = Stop.new
+    @traject = Traject.find_by_starting_address(@start_address)
     @traject_id = Traject.find_by_starting_address(@start_address).id
 
     session[:request_id] = @request.id

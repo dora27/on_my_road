@@ -78,7 +78,7 @@
 
             <!-- call to action -->
             <div class="card-ticket-bouton" id="btn-bookconfirm">
-              <%= link_to "Réserver", traject_stops_path(traject_id: @traject_id, stop_address: @address_search, stop_time: @stop_time_start, end_time: @end_time), method: :post, class: "btn btn-primary btn-purple" %>
+              <button type="button" class="btn btn-primary btn-purple" data-toggle="modal" data-target="#myModal">Réserver</button>
             </div>
 
           </div>
@@ -123,10 +123,33 @@
         }
       });
     });
-
   <% end %>
 <% end %>
 
 
-
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Voulez-vous envoyer un message à <%= @driver_key %> ? </h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-inputs">
+          <%= simple_form_for([@traject, @stop]) do |f| %>
+            <%= f.input :message, class: "message-text" %>
+            <%= f.hidden_field :traject_id, value: @traject_id %>
+            <%= f.hidden_field :stop_address, value: @address_search %>
+            <%= f.hidden_field :stop_time, value: @stop_time_start %>
+            <%= f.hidden_field :end_time, value: @end_time %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit "Valider", class: "btn btn-primary btn-purple btn-click" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
